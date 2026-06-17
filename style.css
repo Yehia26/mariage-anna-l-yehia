@@ -1,0 +1,340 @@
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  width: 100%; height: 100%;
+  overflow: hidden;
+  background: #1A1008;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  color: #8B6355;
+}
+
+/* ══════════════════════════════════════════
+   POINT 1 — Perspective de scène
+══════════════════════════════════════════ */
+.book-scene {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  bottom: 72px; /* dégager la nav */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1600px;
+  perspective-origin: 50% -5%; /* œil légèrement au-dessus */
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* ── Livre incliné en 3D ── */
+.book-3d {
+  position: relative;
+  pointer-events: auto;
+  transform: rotateX(-5deg);
+  transform-origin: 50% 100%;
+  transform-style: preserve-3d;
+
+  /* ══════════════════════════════════════
+     POINT 2 — Tranche des pages
+     Box-shadows horizontaux = pages empilées
+  ══════════════════════════════════════ */
+  box-shadow:
+     2px 0 0 #EDE0C4,
+     4px 0 0 #E2D4B6,
+     6px 0 0 #D6C8A8,
+     8px 0 0 #CABC9C,
+    10px 1px 2px #BEB090,
+    -2px 0 0 #E8D9BC,
+    -4px 1px 2px #DACBA8;
+}
+
+#flip-book {
+  position: relative;
+}
+
+/* ══════════════════════════════════════════
+   POINT 3 — Reliure centrale (desktop)
+══════════════════════════════════════════ */
+.book-spine {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 7px;
+  height: 100%;
+  z-index: 20;
+  pointer-events: none;
+  background: linear-gradient(
+    to right,
+    #120600 0%,
+    #2A1006 20%,
+    #3E1C0A 40%,
+    #2E1208 60%,
+    #180800 80%,
+    #0A0300 100%
+  );
+  box-shadow:
+    inset 1px 0 3px rgba(255,180,80,0.08),
+    inset -1px 0 3px rgba(0,0,0,0.60),
+    2px 0 6px rgba(0,0,0,0.40),
+    -2px 0 6px rgba(0,0,0,0.40);
+  display: none; /* visible seulement si deux pages affichées (desktop) */
+}
+
+@media (min-width: 768px) {
+  .book-spine { display: block; }
+}
+
+/* ══════════════════════════════════════════
+   POINT 4 — Ombre portée au sol
+══════════════════════════════════════════ */
+.book-ground-shadow {
+  position: absolute;
+  bottom: -32px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  height: 50px;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 85% 100% at 50% 0%,
+    rgba(0,0,0,0.70) 0%,
+    rgba(0,0,0,0.35) 40%,
+    transparent 100%
+  );
+  filter: blur(10px);
+}
+
+/* ══════════════════════════════════════════
+   POINT 5 — Reflet de surface
+══════════════════════════════════════════ */
+.book-reflection {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0; right: 0;
+  height: 35%;
+  pointer-events: none;
+  transform: scaleY(-1) rotateX(5deg);
+  transform-origin: top center;
+  opacity: 0.10;
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, transparent 100%);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, transparent 100%);
+  background: linear-gradient(
+    to bottom,
+    #FAF7EF 0%,
+    #F0E6D0 40%,
+    #2E1206 100%
+  );
+  filter: blur(1px);
+}
+
+/* ══════════════════════════════════════════
+   MOBILE — désactive tout ce qui est lourd
+   (hover:none + pointer:coarse = tactile)
+══════════════════════════════════════════ */
+@media (hover: none) and (pointer: coarse) {
+
+  /* 1. Pas de perspective / rotateX → touch fiable */
+  .book-scene {
+    perspective: none;
+  }
+  .book-3d {
+    transform: none;
+    box-shadow:
+      3px 0 4px rgba(0,0,0,0.25),
+      -2px 0 3px rgba(0,0,0,0.15);
+  }
+
+  /* 2. Reflet + ombre → supprimés */
+  .book-reflection,
+  .book-ground-shadow { display: none; }
+
+  /* 3. Reliure → inutile en portrait single-page */
+  .book-spine { display: none !important; }
+}
+
+/* ── Pages : StPageFlip impose width/height ── */
+.page {
+  overflow: hidden;
+  position: relative;
+  background: #FAF7EF;
+}
+
+/* Contenu plein-page */
+.p-inner {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #FAF7EF;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Images aquarelle en fond, proportions préservées */
+.bg-img {
+  position: absolute;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: 0.5;
+}
+
+/* Overlay de texte absolu */
+.over { position: absolute; inset: 0; display: flex; flex-direction: column; }
+
+/* Typographie commune */
+.t-sc    { font-family: 'Cormorant SC', serif; font-weight: 300; color: #B8644A; letter-spacing: 0.1em; line-height: 1.1; }
+.t-it    { font-style: italic; font-weight: 300; }
+.t-muted { color: #A8826F; }
+.t-terra { color: #B8644A; }
+
+/* ── Barre de navigation ── */
+#nav {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  padding: 10px 24px;
+  padding-bottom: max(10px, env(safe-area-inset-bottom));
+  background: rgba(20, 12, 4, 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+#nav button {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 2rem;
+  color: #C8A878;
+  background: none;
+  border: none;
+  cursor: pointer;
+  min-width: 52px; min-height: 52px;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0.85;
+  transition: opacity 0.15s;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+#nav button:active, #nav button:hover { opacity: 1; }
+#nav button:disabled { opacity: 0.25; pointer-events: none; }
+
+#page-num {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  color: #A8826F;
+  min-width: 52px;
+  text-align: center;
+}
+
+/* ── Ornement trait ── */
+.rule {
+  width: 36px; height: 1px;
+  background: #D4B896;
+  margin: 0 auto;
+}
+
+/* ── Or Disney ── */
+.gold {
+  background: linear-gradient(
+    to bottom,
+    #FFFFFF 0%,
+    #FFF5A0 6%,
+    #FFE000 16%,
+    #FFD000 30%,
+    #E8A800 48%,
+    #C07800 66%,
+    #8A5000 84%,
+    #502800 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter:
+    drop-shadow(0 1px 0   rgba(255,255,180,0.90))
+    drop-shadow(0 -1px 0  rgba(60,25,0,0.80))
+    drop-shadow(0 3px 5px rgba(0,0,0,0.85))
+    drop-shadow(0 7px 16px rgba(0,0,0,0.60))
+    drop-shadow(0 0 12px  rgba(255,200,0,0.50))
+    drop-shadow(0 0 28px  rgba(255,160,0,0.25));
+}
+
+/* ── Couverture : photo cuir photoréaliste ── */
+.page-cover {
+  background: #0A0A0A !important;
+}
+
+.cover-leather-photo {
+  background-image: url('images/chateau-de-roquefeuille-cuir.avif');
+  background-size: cover;
+  background-position: center;
+  background-color: #0A0A0A;
+}
+
+/* Vignettage + reflet diagonal empilés en pseudo-éléments */
+.cover-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    /* Vignettage dramatique : coins très sombres, centre lumineux */
+    radial-gradient(
+      ellipse 58% 62% at 50% 46%,
+      transparent 0%,
+      rgba(0,0,0,0.28) 50%,
+      rgba(0,0,0,0.72) 80%,
+      rgba(0,0,0,0.88) 100%
+    ),
+    /* Halo chaud très subtil au centre (met le texte en valeur) */
+    radial-gradient(
+      ellipse 45% 48% at 50% 46%,
+      rgba(255,210,140,0.04) 0%,
+      transparent 100%
+    );
+}
+.cover-rule {
+  width: 40px; height: 1px;
+  background: linear-gradient(to right, transparent, rgba(200,165,90,0.6), transparent);
+  margin: 1rem auto;
+}
+.cover-frame {
+  position: absolute;
+  inset: 12px 10px 12px 14px;
+  border: 1px solid rgba(200,165,90,0.30);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.cover-frame::before {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  border: 1px solid rgba(200,165,90,0.15);
+  pointer-events: none;
+}
+.cover-title-disney {
+  font-family: 'Cormorant SC', serif;
+  font-weight: 300;
+  font-size: clamp(2rem, 8.5vw, 3.2rem);
+  letter-spacing: 0.18em;
+  line-height: 1.2;
+}
+.cover-amp-disney {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.2rem, 5vw, 1.6rem);
+  margin: 0.3rem 0;
+  letter-spacing: 0.08em;
+}
+.cover-sub-disney {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(0.62rem, 2.4vw, 0.78rem);
+  letter-spacing: 0.28em;
+}

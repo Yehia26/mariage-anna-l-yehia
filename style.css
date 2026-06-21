@@ -31,7 +31,7 @@ body {
   /* max-width: 440px; */
   width: 100%;
   margin: 0 auto;
-  color: #fff;
+  color: #8B2635;
 }
 
 /* Familles — ancrées en haut */
@@ -52,7 +52,7 @@ body {
 .famille {
   font-style: italic;
   font-weight: 300;
-  font-size: clamp(0.72rem, 2.6vw, 0.88rem);
+  font-size: clamp(1rem, 3.5vw, 1.2rem);
   line-height: 1.8;
 }
 
@@ -68,7 +68,8 @@ body {
   font-style: italic;
   font-weight: 300;
   font-size: clamp(0.72rem, 2.6vw, 0.88rem);
-  border-top: 1px solid rgba(255,255,255,0.3);
+  font-size: clamp(1rem, 3.5vw, 1.2rem);
+  border-top: 1px solid rgba(139,38,53,0.3);
   padding-top: 0.6rem;
 }
 
@@ -90,8 +91,8 @@ body {
 .invite {
   font-style: italic;
   font-weight: 300;
-  font-size: 20px;
-  color: rgba(255, 255, 255, 0.92);
+  font-size: clamp(1.1rem, 4vw, 1.4rem);
+  color: rgba(139, 38, 53, 0.85);
   line-height: 1.9;
 }
 
@@ -121,5 +122,5 @@ body {
   font-style: italic;
   font-weight: 300;
   font-size: clamp(0.95rem, 3.5vw, 1.1rem);
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(139, 38, 53, 0.75);
 }

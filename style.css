@@ -134,3 +134,47 @@ body {
   font-size: clamp(0.95rem, 3.5vw, 1.1rem);
   color: rgba(139, 38, 53, 0.75);
 }
+
+/* Section date / lieu / houppa */
+.section-date {
+  position: relative;
+  z-index: 1;
+  min-height: 100svh;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 1rem;
+  padding: 4rem 2rem;
+  color: #8B2635;
+}
+
+.date-label {
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1rem, 3.8vw, 1.3rem);
+}
+
+.date-au {
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1rem, 3.8vw, 1.3rem);
+  opacity: 0.75;
+}
+
+.date-lieu {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(2.8rem, 11vw, 4.5rem);
+  line-height: 1.2;
+}
+
+.date-houppa {
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1rem, 3.8vw, 1.3rem);
+  line-height: 1.8;
+  opacity: 0.85;
+  margin-top: 0.5rem;
+}

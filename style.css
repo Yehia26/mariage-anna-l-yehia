@@ -16,14 +16,22 @@ body {
   top: 0; left: 0;
   width: 100vw;
   height: 100vh;
-  height: 100lvh; /* large viewport = constant, ne change pas avec la barre d'adresse */
-  background-image: url('images/chateau-de-roquefeuille-aquarelle-3.jpeg');
-  background-size: 130%;
-  background-position: center center;
+  height: 100lvh;
+  overflow: hidden;
   opacity: 0.7;
   z-index: 0;
-  will-change: transform;
+}
+
+.bg-img {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 130%;
+  height: 130%;
+  object-fit: cover;
+  object-position: center;
+  transform: translate(-50%, -50%) scale(1);
   transform-origin: center center;
+  will-change: transform;
 }
 
 /* ─── BARRE DE PROGRESSION ──────────────────────── */

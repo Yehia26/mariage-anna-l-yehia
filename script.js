@@ -1,4 +1,4 @@
-const bg          = document.getElementById('bg');
+const bgImg       = document.getElementById('bgImg');
 const progressBar = document.getElementById('progressBar');
 
 const ZOOM_START    = 1.0;
@@ -16,8 +16,8 @@ function update() {
   const t     = Math.min(window.scrollY / maxScroll, 1);
   const scale = ZOOM_START + t * (ZOOM_END - ZOOM_START);
 
-  if (bg && !reducedMotion) {
-    bg.style.transform = `scale(${scale.toFixed(4)})`;
+  if (bgImg && !reducedMotion) {
+    bgImg.style.transform = `translate(-50%, -50%) scale(${scale.toFixed(4)})`;
   }
 
   if (progressBar) {

@@ -137,12 +137,24 @@ body {
 }
 
 .invite {
+  line-height: 1.6;
+}
+
+/* Cinzel : annonce formelle en capitales */
+.invite--cinzel {
   font-family: 'Cinzel', Georgia, serif;
   font-style: normal;
   font-weight: 400;
-  font-size: clamp(0.85rem, 3.5vw, 1.15rem);
-  letter-spacing: 0.08em;
-  line-height: 1.6;
+  font-size: clamp(0.95rem, 4vw, 1.3rem);
+  letter-spacing: 0.1em;
+}
+
+/* Cormorant Garamond italic : transition douce vers les prénoms */
+.invite--garamond {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.3rem, 5.5vw, 1.9rem);
 }
 
 .noms {
@@ -155,11 +167,11 @@ body {
 }
 
 .nom {
-  font-size: clamp(4.5rem, 18vw, 7rem);
+  font-size: clamp(5.5rem, 22vw, 8.5rem);
 }
 
 .noms-et {
-  font-size: clamp(2.2rem, 9vw, 3.5rem);
+  font-size: clamp(2.8rem, 11vw, 4.5rem);
   opacity: 0.85;
   line-height: 1.2;
 }

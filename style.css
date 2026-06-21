@@ -7,9 +7,10 @@
 body {
   font-family: 'Cormorant Garamond', Georgia, serif;
   background-color: #fff;
+  overflow-x: hidden;
 }
 
-/* Fond plein écran */
+/* ─── FOND ──────────────────────────────────────── */
 .bg {
   position: fixed;
   inset: 0;
@@ -17,36 +18,48 @@ body {
   background-image: url('images/chateau-de-roquefeuille-aquarelle-3.jpeg');
   background-size: 130%;
   background-position: center center;
+  opacity: 0.7;
   z-index: 0;
   will-change: transform;
-  transform: translateZ(0);
-  opacity: 0.7;
+  transform-origin: center center;
 }
 
-/* Hero : plein écran, familles en haut, noms au centre, lieu en bas */
-.hero {
+/* ─── BARRE DE PROGRESSION ──────────────────────── */
+.progress-bar {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  width: 0%;
+  background: #8B2635;
+  z-index: 100;
+}
+
+/* ─── SECTIONS ──────────────────────────────────── */
+.section {
   position: relative;
   z-index: 1;
-  display: flex;
-  flex-direction: column;
   min-height: 100svh;
   min-height: 100vh;
-  padding: 3.5rem 2rem 3rem;
-  /* max-width: 440px; */
-  width: 100%;
-  margin: 0 auto;
-  color: #8B2635;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3.5rem 2rem;
 }
 
-/* Familles — ancrées en haut */
+/* ─── SECTION ① HERO ────────────────────────────── */
+.section--hero {
+  justify-content: space-between;
+}
+
+/* Familles */
 .familles {
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 0.6rem;
   width: 100%;
+  color: #8B2635;
 }
 
-/* Grands-parents : deux colonnes côte à côte */
 .grands-parents {
   display: flex;
   justify-content: space-between;
@@ -56,29 +69,25 @@ body {
 .famille {
   font-style: italic;
   font-weight: 300;
-  font-size: clamp(1.2rem, 4.5vw, 1.5rem);
-  line-height: 1.2;
+  font-size: clamp(1rem, 3.5vw, 1.2rem);
+  line-height: 1.55;
 }
 
-.famille--right {
-  text-align: right;
-}
+.famille--right { text-align: right; }
 
-/* Parents : une ligne, côte à côte */
 .parents {
   display: flex;
   justify-content: space-between;
   width: 100%;
   font-style: italic;
   font-weight: 300;
-  font-size: clamp(1.2rem, 4.5vw, 1.5rem);
+  font-size: clamp(1rem, 3.5vw, 1.2rem);
+  color: #8B2635;
 }
 
-.parent--right {
-  text-align: right;
-}
+.parent--right { text-align: right; }
 
-/* Noms + invite — centrés verticalement */
+/* Noms au centre */
 .hero-middle {
   flex: 1;
   display: flex;
@@ -86,15 +95,16 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  gap: 1.8rem;
+  gap: 1rem;
+  color: #8B2635;
 }
 
 .invite {
   font-style: italic;
   font-weight: 300;
-  font-size: clamp(1.1rem, 4vw, 1.4rem);
-  color: rgba(139, 38, 53, 0.85);
-  line-height: 1.9;
+  font-size: clamp(1rem, 3.8vw, 1.3rem);
+  line-height: 1.8;
+  opacity: 0.78;
 }
 
 .noms {
@@ -104,7 +114,6 @@ body {
   flex-direction: column;
   align-items: center;
   line-height: 1.05;
-  gap: 0;
 }
 
 .nom {
@@ -112,62 +121,59 @@ body {
 }
 
 .noms-et {
-  font-size: clamp(2.5rem, 10vw, 4rem);
-  opacity: 0.7;
+  font-size: clamp(2.2rem, 9vw, 3.5rem);
+  opacity: 0.65;
   line-height: 1.2;
 }
 
-/* Lieu — ancré en bas */
-.lieu {
+/* Scroll hint */
+.scroll-hint {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
-  text-align: center;
+  padding-bottom: 0.5rem;
 }
 
-.lieu-nom {
-  font-style: italic;
-  font-weight: 300;
-  font-size: clamp(1.1rem, 4.5vw, 1.4rem);
+.scroll-line {
+  display: block;
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(to bottom, rgba(139, 38, 53, 0.6), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+  transform-origin: top;
 }
 
-.lieu-adresse {
-  font-style: italic;
-  font-weight: 300;
-  font-size: clamp(0.95rem, 3.5vw, 1.1rem);
-  color: rgba(139, 38, 53, 0.75);
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.25; transform: scaleY(0.55); }
+  55%       { opacity: 0.9;  transform: scaleY(1); }
 }
 
-/* Section date / lieu / houppa */
-.section-date {
-  position: relative;
-  z-index: 1;
-  min-height: 100svh;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* ─── SECTION ② DATE ────────────────────────────── */
+.section--date {
   justify-content: center;
+}
+
+.date-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  gap: 1rem;
-  padding: 4rem 2rem;
+  gap: 0.9rem;
   color: #8B2635;
 }
 
 .date-label {
   font-style: italic;
   font-weight: 400;
-  font-size: clamp(1.5rem, 6vw, 2.2rem);
-  color: #8B2635;
-  letter-spacing: 0.03em;
+  font-size: clamp(1.4rem, 5.5vw, 2rem);
+  letter-spacing: 0.02em;
 }
 
 .date-au {
   font-style: italic;
   font-weight: 300;
   font-size: clamp(1rem, 3.8vw, 1.3rem);
-  opacity: 0.75;
+  opacity: 0.65;
 }
 
 .date-lieu {
@@ -180,24 +186,16 @@ body {
   font-style: italic;
   font-weight: 300;
   font-size: clamp(1rem, 3.8vw, 1.3rem);
-  line-height: 1.8;
-  opacity: 0.85;
-  margin-top: 0.5rem;
+  line-height: 1.85;
+  opacity: 0.78;
+  margin-top: 0.3rem;
 }
 
-/* Section RSVP */
-.section-rsvp {
-  position: relative;
-  z-index: 1;
-  min-height: 100svh;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
+/* ─── SECTION ③ RSVP ────────────────────────────── */
+.section--rsvp {
   justify-content: center;
-  padding: 3rem 1.5rem;
 }
 
-/* Carte glassmorphisme */
 .glass-card {
   background: rgba(255, 255, 255, 0.02);
   backdrop-filter: blur(6px);
@@ -216,7 +214,6 @@ body {
   position: relative;
 }
 
-/* Double bordure intérieure */
 .glass-card::before {
   content: '';
   position: absolute;
@@ -232,7 +229,6 @@ body {
   margin-bottom: 1.4rem;
 }
 
-/* Séparateur ◆ */
 .rsvp-sep {
   display: flex;
   align-items: center;
@@ -263,12 +259,8 @@ body {
   margin-bottom: 2rem;
 }
 
-.rsvp-texte strong {
-  font-weight: 400;
-  opacity: 1;
-}
+.rsvp-texte strong { font-weight: 400; }
 
-/* Bouton avec flèche animée */
 .rsvp-btn {
   display: inline-flex;
   align-items: center;
@@ -298,6 +290,44 @@ body {
   border-color: #8B2635;
 }
 
-.rsvp-btn:hover::after {
-  transform: translateX(5px);
+.rsvp-btn:hover::after { transform: translateX(5px); }
+
+/* ─── ORNEMENT ◆ ────────────────────────────────── */
+.ornement {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  width: 100%;
+  margin: 0.2rem 0;
 }
+
+.ornement::before,
+.ornement::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(139, 38, 53, 0.22);
+}
+
+.ornement span {
+  font-size: 0.45rem;
+  color: rgba(139, 38, 53, 0.45);
+}
+
+/* ─── ANIMATIONS SCROLL ─────────────────────────── */
+.animate {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity  0.95s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.95s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.animate.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Délais en cascade pour le hero */
+.section--hero .familles  { transition-delay: 0.15s; }
+.section--hero .hero-middle { transition-delay: 0.45s; }

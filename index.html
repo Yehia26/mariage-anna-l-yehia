@@ -3,20 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mariage Annaël &amp; Yehia</title>
+  <title>Mariage Annaël &amp; Yehia — 3 septembre 2026</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="bg" aria-hidden="true"></div>
+<!-- Fond zoomé au scroll -->
+<div class="bg" id="bg" aria-hidden="true"></div>
 
-<div class="hero">
+<!-- Barre de progression -->
+<div class="progress-bar" id="progressBar" aria-hidden="true"></div>
 
-  <div class="familles">
-    <!-- Grands-parents côte à côte -->
+<!-- ① FAMILLES & NOMS -->
+<section class="section section--hero">
+
+  <div class="familles animate">
     <div class="grands-parents">
       <div class="famille">
         <p>Mme Rachel Attias</p>
@@ -28,14 +32,13 @@
         <p>Mme Stella Cohen</p>
       </div>
     </div>
-    <!-- Parents sur une ligne -->
     <div class="parents">
       <span>M et Mme Karen et Henry Bouchara</span>
       <span class="parent--right">Mr et Mme Anne et Eric Cohen</span>
     </div>
   </div>
 
-  <div class="hero-middle">
+  <div class="hero-middle animate">
     <p class="invite">ont le plaisir de vous inviter<br>au mariage de</p>
     <h1 class="noms">
       <span class="nom">Annaël</span>
@@ -44,17 +47,26 @@
     </h1>
   </div>
 
-</div>
+  <div class="scroll-hint" aria-label="Défiler">
+    <span class="scroll-line"></span>
+  </div>
 
-<div class="section-date">
-  <p class="date-label">Le Jeudi 03 septembre 2026</p>
-  <p class="date-au">au</p>
-  <p class="date-lieu">Chateau de Roquefeuille</p>
-  <p class="date-houppa">La houppa aura lieu à 16h et sera suivie de<br>la réception</p>
-</div>
+</section>
 
-<div class="section-rsvp">
-  <div class="glass-card">
+<!-- ② DATE & LIEU -->
+<section class="section section--date">
+  <div class="date-content animate">
+    <p class="date-label">Le Jeudi 03 septembre 2026</p>
+    <div class="ornement"><span>◆</span></div>
+    <p class="date-au">au</p>
+    <p class="date-lieu">Chateau de Roquefeuille</p>
+    <p class="date-houppa">La houppa aura lieu à 16h<br>et sera suivie de la réception</p>
+  </div>
+</section>
+
+<!-- ③ RSVP -->
+<section class="section section--rsvp">
+  <div class="glass-card animate">
     <p class="rsvp-titre">Confirmer votre présence</p>
     <div class="rsvp-sep"><span>◆</span></div>
     <p class="rsvp-texte">Merci de répondre avant le<br><strong>1er juillet 2026</strong></p>
@@ -62,7 +74,7 @@
       Répondre au formulaire
     </a>
   </div>
-</div>
+</section>
 
 <script src="script.js"></script>
 </body>

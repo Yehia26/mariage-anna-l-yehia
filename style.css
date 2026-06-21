@@ -156,8 +156,10 @@ body {
 
 .date-label {
   font-style: italic;
-  font-weight: 300;
-  font-size: clamp(1rem, 3.8vw, 1.3rem);
+  font-weight: 400;
+  font-size: clamp(1.5rem, 6vw, 2.2rem);
+  color: #8B2635;
+  letter-spacing: 0.03em;
 }
 
 .date-au {

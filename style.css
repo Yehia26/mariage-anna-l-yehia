@@ -78,8 +78,8 @@ body {
 
 .famille {
   font-style: italic;
-  font-weight: 300;
-  font-size: clamp(1rem, 3.5vw, 1.2rem);
+  font-weight: 400;
+  font-size: clamp(1.1rem, 4vw, 1.4rem);
   line-height: 1.55;
 }
 
@@ -90,8 +90,8 @@ body {
   justify-content: space-between;
   width: 100%;
   font-style: italic;
-  font-weight: 300;
-  font-size: clamp(1rem, 3.5vw, 1.2rem);
+  font-weight: 400;
+  font-size: clamp(1.1rem, 4vw, 1.4rem);
   color: #8B2635;
 }
 
@@ -112,9 +112,8 @@ body {
 .invite {
   font-style: italic;
   font-weight: 400;
-  font-size: 22px;
-  line-height: 1.3;
-  /* opacity: 0.78; */
+  font-size: clamp(1.2rem, 5vw, 1.6rem);
+  line-height: 1.45;
 }
 
 .noms {
@@ -132,7 +131,7 @@ body {
 
 .noms-et {
   font-size: clamp(2.2rem, 9vw, 3.5rem);
-  opacity: 0.65;
+  opacity: 0.85;
   line-height: 1.2;
 }
 
@@ -174,21 +173,20 @@ body {
 
 .date-label {
   font-style: italic;
-  font-weight: 400;
-  font-size: clamp(1.4rem, 5.5vw, 2rem);
+  font-weight: 500;
+  font-size: clamp(1.5rem, 6vw, 2.2rem);
   letter-spacing: 0.02em;
 }
 
 .date-au {
   font-style: italic;
-  font-weight: 300;
-  font-size: clamp(1rem, 3.8vw, 1.3rem);
-  opacity: 0.65;
+  font-weight: 400;
+  font-size: clamp(1.1rem, 4vw, 1.4rem);
 }
 
 .date-lieu {
   font-family: 'Great Vibes', cursive;
-  font-size: clamp(2.8rem, 11vw, 4.5rem);
+  font-size: clamp(3rem, 12vw, 5rem);
   line-height: 1.2;
 }
 
@@ -262,14 +260,13 @@ body {
 
 .rsvp-texte {
   font-style: italic;
-  font-weight: 300;
-  font-size: clamp(0.92rem, 3.5vw, 1.1rem);
+  font-weight: 400;
+  font-size: clamp(1.05rem, 4vw, 1.3rem);
   line-height: 1.9;
-  opacity: 0.85;
   margin-bottom: 2rem;
 }
 
-.rsvp-texte strong { font-weight: 400; }
+.rsvp-texte strong { font-weight: 600; }
 
 .rsvp-btn {
   display: inline-flex;
@@ -280,8 +277,8 @@ body {
   border: 1px solid rgba(139, 38, 53, 0.45);
   border-radius: 50px;
   font-style: italic;
-  font-weight: 300;
-  font-size: clamp(0.85rem, 3.2vw, 1rem);
+  font-weight: 400;
+  font-size: clamp(1rem, 3.8vw, 1.15rem);
   letter-spacing: 0.06em;
   color: #8B2635;
   text-decoration: none;
@@ -416,8 +413,8 @@ body {
 .tl-time {
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-style: italic;
-  font-weight: 300;
-  font-size: clamp(1.4rem, 5.5vw, 2rem);
+  font-weight: 400;
+  font-size: clamp(1.5rem, 6vw, 2.2rem);
   color: #8B2635;
   line-height: 1.1;
 }
@@ -426,9 +423,9 @@ body {
 .tl-label {
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-style: normal;
-  font-weight: 300;
-  font-size: clamp(0.95rem, 3.8vw, 1.3rem);
-  color: rgba(139, 38, 53, 0.72);
+  font-weight: 400;
+  font-size: clamp(1.05rem, 4.2vw, 1.4rem);
+  color: rgba(139, 38, 53, 0.90);
   line-height: 1.35;
   margin-top: 0.2rem;
 }

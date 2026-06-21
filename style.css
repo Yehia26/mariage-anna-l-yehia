@@ -4,19 +4,9 @@
   box-sizing: border-box;
 }
 
-html, body {
-  width: 100%;
-  min-height: 100%;
-}
-
 body {
   font-family: 'Cormorant Garamond', Georgia, serif;
   background-color: #1a1008;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100svh;
-  min-height: 100vh;
 }
 
 /* Fond plein écran */
@@ -29,22 +19,22 @@ body {
   z-index: 0;
 }
 
-/* Contenu centré au-dessus du fond */
+/* Hero : plein écran, familles en haut, noms au centre, lieu en bas */
 .hero {
   position: relative;
   z-index: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 1.6rem;
-  padding: 2.5rem 2rem;
-  max-width: 420px;
+  min-height: 100svh;
+  min-height: 100vh;
+  padding: 3.5rem 2rem 3rem;
+  max-width: 440px;
   width: 100%;
+  margin: 0 auto;
   color: #fff;
 }
 
-/* Familles */
+/* Familles — ancrées en haut */
 .familles {
   display: flex;
   justify-content: space-between;
@@ -56,14 +46,23 @@ body {
   font-weight: 300;
   font-size: clamp(0.78rem, 3vw, 0.92rem);
   line-height: 1.65;
-  color: #fff;
 }
 
 .famille--right {
   text-align: right;
 }
 
-/* Texte d'invitation */
+/* Noms + invite — centrés verticalement */
+.hero-middle {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 1.2rem;
+}
+
 .invite {
   font-style: italic;
   font-weight: 300;
@@ -72,28 +71,26 @@ body {
   line-height: 1.8;
 }
 
-/* Noms des mariés — police script */
 .noms {
   font-family: 'Great Vibes', cursive;
   font-size: clamp(3rem, 13vw, 5rem);
   font-weight: 400;
-  color: #fff;
   line-height: 1.1;
-  letter-spacing: 0.01em;
 }
 
-/* Lieu */
+/* Lieu — ancré en bas */
 .lieu {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 0.3rem;
+  text-align: center;
 }
 
 .lieu-nom {
   font-style: italic;
   font-weight: 300;
   font-size: clamp(0.88rem, 3.2vw, 1rem);
-  color: #fff;
 }
 
 .lieu-adresse {

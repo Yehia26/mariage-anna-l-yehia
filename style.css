@@ -54,6 +54,7 @@ body {
   flex-direction: column;
   align-items: center;
   padding: 5.5rem 2rem;
+  gap: 3rem;
 }
 
 /* ─── SECTION ① HERO ────────────────────────────── */
@@ -108,7 +109,7 @@ body {
   gap: 1rem;
   color: #8B2635;
   width: 100%;
-  padding: 2.2rem 1.8rem;
+  padding: 2rem 1.8rem;
 
   /* 8 dégradés = 4 coins en L, chaque ligne s'efface vers transparent */
   background-image:

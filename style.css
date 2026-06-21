@@ -18,17 +18,20 @@ body {
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
+  /* Centrage vertical de l'image sans crop horizontal */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #bgZoom img {
+  /* width 100% garantit que les deux piliers sont toujours visibles */
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  /* Ajuste ce % vertical pour cadrer le portail (0% = haut, 100% = bas) */
-  object-position: center 65%;
+  height: auto;
+  flex-shrink: 0;
   display: block;
-  /* Même valeur que object-position pour que le zoom entre par le portail */
-  transform-origin: 50% 65%;
+  /* Zoom vers le centre du portail (légèrement au-dessus du milieu) */
+  transform-origin: 50% 42%;
   will-change: transform;
 }
 

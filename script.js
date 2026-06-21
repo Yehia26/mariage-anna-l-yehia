@@ -8,10 +8,9 @@ function onScroll() {
   const scrolled  = window.scrollY;
   const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
 
-  // Zoom lié au scroll dans la section héro
-  if (bgImg && heroSection) {
-    const heroH = heroSection.offsetHeight;
-    const t     = Math.min(scrolled / heroH, 1);
+  // Zoom synchronisé avec tout le scroll (fin du zoom = dernière card)
+  if (bgImg && maxScroll > 0) {
+    const t = Math.min(scrolled / maxScroll, 1);
     bgImg.style.transform = `scale(${1 + t * ZOOM_MAX})`;
   }
 

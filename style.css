@@ -14,9 +14,8 @@ body {
   position: fixed;
   inset: 0;
   background-image: url('images/chateau-de-roquefeuille-aquarelle-3.jpeg');
-  background-size: 100% auto;
+  background-size: cover;
   background-position: center center;
-  background-repeat: no-repeat;
   z-index: 0;
 }
 

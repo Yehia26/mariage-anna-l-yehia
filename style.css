@@ -41,6 +41,7 @@ body {
   background: rgba(20, 10, 4, 0.38);
   z-index: 1;
   pointer-events: none;
+  opacity: 0; /* JS contrôle la transition depuis le hero */
 }
 
 /* ══════════════════════════════════════════
@@ -74,37 +75,132 @@ main {
 }
 
 /* ══════════════════════════════════════════
-   HERO
+   HERO — effet aquarelle légère
 ══════════════════════════════════════════ */
 .section--hero {
   flex-direction: column;
   justify-content: center;
-  gap: 3.5rem;
+  position: relative;
+  padding: 5rem 2rem 4rem;
 }
 
-.hero-content {
-  text-align: center;
+/* Voile crème : neutralise le bg-overlay sombre, donne la teinte papier */
+.hero-wash {
+  position: absolute;
+  inset: 0;
+  background: rgba(250, 246, 239, 0.87);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Vignette radiale : transparente au centre (image visible), blanche aux bords */
+.hero-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 72% 58% at 50% 52%,
+    rgba(250, 246, 239, 0.00)  0%,
+    rgba(250, 246, 239, 0.40) 36%,
+    rgba(250, 246, 239, 0.78) 60%,
+    rgba(250, 246, 239, 0.96) 86%,
+    rgba(250, 246, 239, 1.00) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Contenu principal au-dessus des voiles */
+.hero-inner {
+  position: relative;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
-  animation: contentFadeOut 1.6s ease-in 4s forwards;
+  text-align: center;
+  gap: 1.5rem;
+  max-width: 420px;
+  width: 100%;
+  animation: heroFadeUp 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
 }
 
-@keyframes contentFadeOut {
-  from { opacity: 1; transform: translateY(0); }
-  to   { opacity: 0; transform: translateY(-12px); }
+/* Familles — deux colonnes */
+.hero-familles {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 1rem;
 }
 
-.hero-supra {
+.hero-famille {
   font-style: italic;
   font-weight: 300;
-  font-size: clamp(0.72rem, 3vw, 0.88rem);
-  letter-spacing: 0.36em;
-  color: rgba(220, 190, 140, 0.82);
-  text-transform: uppercase;
-  margin-bottom: 1.2rem;
+  font-size: clamp(0.66rem, 2.4vw, 0.78rem);
+  letter-spacing: 0.05em;
+  line-height: 1.85;
+  color: #5C3D2E;
 }
 
+.hero-famille--right { text-align: right; }
+
+/* "ont le plaisir de vous inviter…" */
+.hero-invite {
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(0.70rem, 2.6vw, 0.82rem);
+  color: #8B6355;
+  letter-spacing: 0.02em;
+  line-height: 1.7;
+  max-width: 290px;
+}
+
+/* Noms des mariés */
+.hero-noms {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(2.4rem, 10vw, 4rem);
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  color: #3D2B1F;
+}
+
+.hero-et {
+  font-weight: 300;
+  font-size: 0.82em;
+  color: #8B6355;
+}
+
+/* Séparateur fin */
+.hero-sep {
+  width: 36px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(184, 100, 74, 0.40), transparent);
+}
+
+/* Lieu */
+.hero-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.28rem;
+}
+
+.hero-chateau {
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(0.80rem, 3vw, 0.96rem);
+  letter-spacing: 0.04em;
+  color: #5C3D2E;
+}
+
+.hero-adresse {
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(0.64rem, 2.4vw, 0.76rem);
+  letter-spacing: 0.04em;
+  color: #8B6355;
+}
+
+/* Hero rule (réutilisé dans section--back) */
 .hero-rule {
   width: 48px;
   height: 1px;
@@ -112,37 +208,14 @@ main {
   margin: 1rem auto;
 }
 
-.hero-name {
-  font-family: 'Cormorant SC', serif;
-  font-weight: 300;
-  font-size: clamp(3rem, 13vw, 5.5rem);
-  letter-spacing: 0.18em;
-  line-height: 1.1;
-}
-
-.hero-amp {
-  font-style: italic;
-  font-weight: 300;
-  font-size: clamp(1.2rem, 5vw, 1.9rem);
-  color: rgba(220, 190, 140, 0.72);
-  letter-spacing: 0.1em;
-  margin: 0.5rem 0;
-}
-
-.hero-date {
-  font-style: italic;
-  font-weight: 300;
-  font-size: clamp(0.72rem, 3vw, 0.88rem);
-  letter-spacing: 0.26em;
-  color: rgba(200, 170, 120, 0.78);
-  margin-top: 1.2rem;
-}
-
 /* Scroll hint */
 .scroll-hint {
+  position: relative;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 3rem;
 }
 
 .scroll-line {
@@ -154,28 +227,18 @@ main {
   transform-origin: top center;
 }
 
+/* Variante sombre (hero fond clair) */
+.scroll-line--dark {
+  background: linear-gradient(to bottom, rgba(92, 61, 46, 0.55), transparent);
+}
+
 @keyframes scrollPulse {
   0%, 100% { opacity: 0.25; transform: scaleY(0.6); }
   55%       { opacity: 0.85; transform: scaleY(1); }
 }
 
-/* Hero : animation au chargement, cascade sur enfants */
-.hero-el {
-  opacity: 0;
-  animation: heroFadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
-.hero-content > .hero-el:nth-child(1) { animation-delay: 0.25s; }
-.hero-content > .hero-el:nth-child(2) { animation-delay: 0.45s; }
-.hero-content > .hero-el:nth-child(3) { animation-delay: 0.65s; }
-.hero-content > .hero-el:nth-child(4) { animation-delay: 0.82s; }
-.hero-content > .hero-el:nth-child(5) { animation-delay: 0.99s; }
-.hero-content > .hero-el:nth-child(6) { animation-delay: 1.15s; }
-.hero-content > .hero-el:nth-child(7) { animation-delay: 1.30s; }
-.section--hero > .scroll-hint         { animation-delay: 5.9s; }
-
 @keyframes heroFadeUp {
-  from { opacity: 0; transform: translateY(20px); }
+  from { opacity: 0; transform: translateY(22px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
@@ -332,22 +395,6 @@ main {
 .t-it    { font-style: italic; font-weight: 300; }
 .t-muted { color: #8B6355; }
 .t-terra { color: #B8644A; }
-
-.gold {
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 232, 115, 0.96) 0%,
-    rgba(220, 178, 62, 0.92)  30%,
-    rgba(185, 132, 22, 0.88)  62%,
-    rgba(140, 88, 10, 0.82)  100%
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  filter:
-    drop-shadow(0 2px 4px rgba(0,0,0,0.65))
-    drop-shadow(0 0 14px rgba(200,140,0,0.22));
-}
 
 /* ══════════════════════════════════════════
    SECTION ② — FAMILLES

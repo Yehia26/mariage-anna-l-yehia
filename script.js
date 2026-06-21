@@ -1,17 +1,25 @@
 const bgImg       = document.querySelector('#bgZoom img');
 const heroSection = document.querySelector('.section--hero');
 const progressBar = document.getElementById('progressBar');
+const bgOverlay   = document.querySelector('.bg-overlay');
 
-const ZOOM_MAX = 0.42; // scale(1) → scale(1.42) sur la hauteur du hero
+const ZOOM_MAX = 0.42; // scale(1) → scale(1.42)
 
 function onScroll() {
   const scrolled  = window.scrollY;
   const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
 
-  // Zoom synchronisé avec tout le scroll (fin du zoom = dernière card)
+  // Zoom synchronisé sur l'ensemble du scroll
   if (bgImg && maxScroll > 0) {
     const t = Math.min(scrolled / maxScroll, 1);
     bgImg.style.transform = `scale(${1 + t * ZOOM_MAX})`;
+  }
+
+  // bg-overlay : transparent pendant le hero, sombre ensuite
+  if (bgOverlay && heroSection) {
+    const heroH = heroSection.offsetHeight;
+    const t = Math.min(scrolled / (heroH * 0.75), 1);
+    bgOverlay.style.opacity = t.toString();
   }
 
   // Barre de progression

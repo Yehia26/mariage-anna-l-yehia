@@ -48,3 +48,53 @@ const observer = new IntersectionObserver(
 );
 
 document.querySelectorAll('.animate').forEach(el => observer.observe(el));
+
+// ─── Musique de fond ────────────────────────────────
+const audio     = document.getElementById('bg-audio');
+const musicBtn  = document.getElementById('musicBtn');
+const iconNote  = musicBtn && musicBtn.querySelector('.music-icon--note');
+const iconMute  = musicBtn && musicBtn.querySelector('.music-icon--mute');
+
+let musicStarted = false;
+let muted        = false;
+
+function setPlayingState(playing) {
+  if (!musicBtn) return;
+  musicBtn.classList.toggle('is-playing', playing);
+  musicBtn.setAttribute('aria-label', playing ? 'Couper la musique' : 'Activer la musique');
+  if (iconNote) iconNote.style.display = playing ? '' : 'none';
+  if (iconMute) iconMute.style.display = playing ? 'none' : '';
+}
+
+function startMusic() {
+  if (musicStarted || !audio) return;
+  musicStarted = true;
+
+  audio.volume = 0.45;
+  audio.play()
+    .then(() => setPlayingState(true))
+    .catch(() => {
+      // Autoplay bloqué malgré le geste (rare) — on réinitialise
+      musicStarted = false;
+    });
+}
+
+// Démarre sur le premier scroll ou tap
+window.addEventListener('scroll',     startMusic, { once: true, passive: true });
+document.addEventListener('touchstart', startMusic, { once: true, passive: true });
+
+// Bouton : toggle mute / unmute
+if (musicBtn) {
+  musicBtn.addEventListener('click', () => {
+    if (!musicStarted) {
+      startMusic();
+      return;
+    }
+    muted = !muted;
+    audio.muted = muted;
+    setPlayingState(!muted);
+  });
+}
+
+// Initialisation visuelle : icône note visible, mute masquée
+setPlayingState(false);

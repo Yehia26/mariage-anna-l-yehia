@@ -363,7 +363,7 @@ body {
 /* Item : grille 3 colonnes — gauche | point | droite */
 .tl-item {
   display: grid;
-  grid-template-columns: 1fr 28px 1fr;
+  grid-template-columns: 1fr 40px 1fr;
   align-items: center;
   gap: 0.8rem;
   padding: 1.2rem 0;
@@ -389,8 +389,8 @@ body {
 
 /* Point cœur sur la ligne */
 .tl-dot {
-  width: 28px;
-  height: 28px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   background: rgba(255,255,255,0.80);
   backdrop-filter: blur(4px);
@@ -398,7 +398,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 9px;
+  font-size: 14px;
   color: #8B2635;
   z-index: 2;
   position: relative;

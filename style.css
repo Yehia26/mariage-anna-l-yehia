@@ -329,5 +329,63 @@ body {
 }
 
 /* Délais en cascade pour le hero */
-.section--hero .familles  { transition-delay: 0.15s; }
+.section--hero .familles    { transition-delay: 0.15s; }
 .section--hero .hero-middle { transition-delay: 0.45s; }
+
+/* Scroll-hint : décoratif uniquement */
+.scroll-hint { pointer-events: none; }
+
+/* ─── SAFE AREA (notch / home bar iPhone) ────────── */
+.section--hero {
+  padding-top:    max(3.5rem, env(safe-area-inset-top));
+}
+.section--rsvp {
+  padding-bottom: max(3.5rem, env(safe-area-inset-bottom));
+}
+
+/* ─── BACKDROP-FILTER FALLBACK ──────────────────── */
+@supports not (backdrop-filter: blur(6px)) {
+  .glass-card { background: rgba(255, 255, 255, 0.72); }
+}
+
+/* ─── MOBILE ─────────────────────────────────────── */
+@media (max-width: 480px) {
+
+  /* Parents trop longs côte à côte → on les empile */
+  .parents {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.2rem;
+  }
+  .parent--right { text-align: center; }
+
+  /* Glass card : padding réduit */
+  .glass-card { padding: 3rem 1.6rem 2.5rem; }
+  .glass-card::before { inset: 5px; }
+
+  /* Noms légèrement réduits */
+  .nom { font-size: clamp(3.8rem, 17vw, 5rem); }
+  .noms-et { font-size: clamp(2rem, 8vw, 3rem); }
+}
+
+@media (max-width: 360px) {
+  .famille { font-size: 0.88rem; }
+  .parents { font-size: 0.88rem; }
+  .date-label { font-size: 1.2rem; }
+}
+
+/* ─── BOUTON : tap target 48px minimum ──────────── */
+.rsvp-btn {
+  min-height: 48px;
+  touch-action: manipulation;
+}
+
+/* ─── REDUCED MOTION ─────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .animate {
+    transition: opacity 0.3s ease;
+    transform: none;
+  }
+  .scroll-line { animation: none; opacity: 0.55; }
+}

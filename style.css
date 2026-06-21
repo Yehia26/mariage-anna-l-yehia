@@ -17,8 +17,7 @@ body {
   position: fixed;
   inset: 0;
   background-image: url('images/cezanne-sainte-victoire.webp');
-  background-size: auto 130%;
-  background-position: 50% 70%;
-  opacity: 0.5;
+  background-size: cover;
+  background-position: center;
   z-index: 0;
 }

@@ -97,7 +97,7 @@ body {
 
 .parent--right { text-align: right; }
 
-/* Noms au centre */
+/* Noms au centre — encadré coins ornementaux */
 .hero-middle {
   flex: 1;
   display: flex;
@@ -107,6 +107,30 @@ body {
   text-align: center;
   gap: 1rem;
   color: #8B2635;
+  width: 100%;
+  padding: 2.2rem 1.8rem;
+
+  /* 8 dégradés = 4 coins en L, chaque ligne s'efface vers transparent */
+  background-image:
+    linear-gradient(to right,  rgba(139,38,53,0.55), transparent),
+    linear-gradient(to bottom, rgba(139,38,53,0.55), transparent),
+    linear-gradient(to left,   rgba(139,38,53,0.55), transparent),
+    linear-gradient(to bottom, rgba(139,38,53,0.55), transparent),
+    linear-gradient(to right,  rgba(139,38,53,0.55), transparent),
+    linear-gradient(to top,    rgba(139,38,53,0.55), transparent),
+    linear-gradient(to left,   rgba(139,38,53,0.55), transparent),
+    linear-gradient(to top,    rgba(139,38,53,0.55), transparent);
+  background-position:
+    top left,    top left,
+    top right,   top right,
+    bottom left, bottom left,
+    bottom right,bottom right;
+  background-size:
+    44px 1px, 1px 44px,
+    44px 1px, 1px 44px,
+    44px 1px, 1px 44px,
+    44px 1px, 1px 44px;
+  background-repeat: no-repeat;
 }
 
 .invite {

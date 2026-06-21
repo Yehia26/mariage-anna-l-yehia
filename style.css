@@ -30,6 +30,17 @@ body {
   display: block;
 }
 
+/* Zoom cinématique sur la première image (entrée entre les poteaux) */
+.bg-img--zoom {
+  transform-origin: 50% 45%;
+  animation: heroZoom 9s ease-in-out forwards;
+}
+
+@keyframes heroZoom {
+  from { transform: scale(1); }
+  to   { transform: scale(1.42); }
+}
+
 .bg-overlay {
   position: fixed;
   inset: 0;
@@ -81,6 +92,12 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  animation: contentFadeOut 1.6s ease-in 4s forwards;
+}
+
+@keyframes contentFadeOut {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(-12px); }
 }
 
 .hero-supra {
@@ -160,7 +177,7 @@ main {
 .hero-content > .hero-el:nth-child(5) { animation-delay: 0.99s; }
 .hero-content > .hero-el:nth-child(6) { animation-delay: 1.15s; }
 .hero-content > .hero-el:nth-child(7) { animation-delay: 1.30s; }
-.section--hero > .scroll-hint        { animation-delay: 1.70s; }
+.section--hero > .scroll-hint        { animation-delay: 5.9s; }
 
 @keyframes heroFadeUp {
   from { opacity: 0; transform: translateY(20px); }

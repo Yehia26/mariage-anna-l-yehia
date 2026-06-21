@@ -3,7 +3,7 @@ const progressBar = document.getElementById('progressBar');
 const sections    = [...document.querySelectorAll('.section')];
 
 // Niveaux de zoom cibles par section (1 → 2 → 3)
-const ZOOM_LEVELS   = [1.0, 1.15, 1.30];
+const ZOOM_LEVELS   = [1.0, 1.35, 1.65];
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 let sectionTops = [];

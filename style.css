@@ -16,9 +16,9 @@ body {
 .bg {
   position: fixed;
   inset: 0;
-  background-image: url('images/chateau-de-roquefeuille-aquarelle-1.jpeg');
+  background-image: url('images/unela_montagne_sainte-victoire_vue_de_la_carriere_bibemus_par_paul_cezanne-1300x975 (1).webp');
   background-size: auto 130%;
-  background-position: 50% 60%;
+  background-position: 50% 70%;
   opacity: 0.5;
   z-index: 0;
 }

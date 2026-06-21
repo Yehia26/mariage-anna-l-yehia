@@ -5,7 +5,7 @@
 }
 
 body {
-  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-family: 'Great Vibes', cursive;
   background-color: #fff;
   overflow-x: hidden;
 }
@@ -80,10 +80,8 @@ body {
 }
 
 .famille {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-style: italic;
   font-weight: 400;
-  font-size: clamp(1.2rem, 4.5vw, 1.55rem);
+  font-size: clamp(1.4rem, 5vw, 1.8rem);
   line-height: 1.55;
   color: #8B2635;
 }
@@ -94,11 +92,8 @@ body {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  font-family: 'Cinzel', Georgia, serif;
-  font-style: normal;
-  font-weight: 500;
-  font-size: clamp(0.75rem, 3vw, 1rem);
-  letter-spacing: 0.06em;
+  font-weight: 400;
+  font-size: clamp(1.1rem, 4vw, 1.4rem);
   color: #8B2635;
 }
 
@@ -116,50 +111,18 @@ body {
   color: #8B2635;
   width: 100%;
   padding: 2rem 1.8rem;
-
-  /* 8 dégradés = 4 coins en L, chaque ligne s'efface vers transparent */
-  background-image:
-    linear-gradient(to right,  rgba(139,38,53,0.75), transparent),
-    linear-gradient(to bottom, rgba(139,38,53,0.75), transparent),
-    linear-gradient(to left,   rgba(139,38,53,0.75), transparent),
-    linear-gradient(to bottom, rgba(139,38,53,0.75), transparent),
-    linear-gradient(to right,  rgba(139,38,53,0.75), transparent),
-    linear-gradient(to top,    rgba(139,38,53,0.75), transparent),
-    linear-gradient(to left,   rgba(139,38,53,0.75), transparent),
-    linear-gradient(to top,    rgba(139,38,53,0.75), transparent);
-  background-position:
-    top left,    top left,
-    top right,   top right,
-    bottom left, bottom left,
-    bottom right,bottom right;
-  background-size:
-    52px 2px, 2px 52px,
-    52px 2px, 2px 52px,
-    52px 2px, 2px 52px,
-    52px 2px, 2px 52px;
-  background-repeat: no-repeat;
 }
 
 .invite {
   line-height: 1.6;
 }
 
-/* Cinzel : annonce formelle en capitales */
 .invite--cinzel {
-  font-family: 'Cinzel', Georgia, serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: clamp(0.95rem, 4vw, 1.3rem);
-  letter-spacing: 0.1em;
+  font-size: clamp(1.2rem, 4.5vw, 1.6rem);
 }
 
-/* Cormorant Garamond italic : transition douce vers les prénoms */
 .invite--garamond {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-style: italic;
-  font-weight: 400;
-  font-size: clamp(1.4rem, 6vw, 2rem);
-  color: #B8974F;
+  font-size: clamp(1.5rem, 6vw, 2rem);
 }
 
 .noms {
@@ -218,19 +181,13 @@ body {
 }
 
 .date-label {
-  font-family: 'Cinzel', Georgia, serif;
-  font-style: normal;
-  font-weight: 500;
-  font-size: clamp(1.2rem, 5vw, 1.8rem);
-  letter-spacing: 0.08em;
+  font-weight: 400;
+  font-size: clamp(1.5rem, 6vw, 2.2rem);
 }
 
 .date-au {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-style: italic;
   font-weight: 400;
   font-size: clamp(1.3rem, 5.5vw, 1.8rem);
-  color: #B8974F;
 }
 
 .date-lieu {
@@ -308,19 +265,14 @@ body {
 }
 
 .rsvp-texte {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-style: italic;
   font-weight: 400;
-  font-size: clamp(1.15rem, 4.5vw, 1.45rem);
+  font-size: clamp(1.3rem, 5vw, 1.8rem);
   line-height: 1.9;
   margin-bottom: 2rem;
 }
 
 .rsvp-texte strong {
-  font-family: 'Cinzel', Georgia, serif;
-  font-style: normal;
-  font-weight: 500;
-  letter-spacing: 0.05em;
+  font-weight: 400;
 }
 
 .rsvp-btn {
@@ -331,11 +283,8 @@ body {
   background: transparent;
   border: 1px solid rgba(139, 38, 53, 0.45);
   border-radius: 50px;
-  font-family: 'Cinzel', Georgia, serif;
-  font-style: normal;
   font-weight: 400;
-  font-size: clamp(0.8rem, 3.2vw, 1rem);
-  letter-spacing: 0.12em;
+  font-size: clamp(1.1rem, 4vw, 1.4rem);
   color: #8B2635;
   text-decoration: none;
   transition: background 0.3s, border-color 0.3s;
@@ -386,14 +335,11 @@ body {
 }
 
 .tl-title {
-  font-family: 'Cinzel', Georgia, serif;
-  font-style: normal;
-  font-weight: 500;
-  font-size: clamp(1.8rem, 7vw, 2.8rem);
-  letter-spacing: 0.2em;
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(3rem, 12vw, 5rem);
   color: #8B2635;
   text-align: center;
-  line-height: 1.3;
+  line-height: 1.2;
 }
 
 .timeline {
@@ -470,29 +416,24 @@ body {
 
 /* Heure */
 .tl-time {
-  font-family: 'Cinzel', Georgia, serif;
-  font-style: normal;
-  font-weight: 500;
-  font-size: clamp(1.6rem, 6.5vw, 2.3rem);
-  letter-spacing: 0.05em;
+  font-weight: 400;
+  font-size: clamp(1.8rem, 7vw, 2.6rem);
   color: #8B2635;
   line-height: 1.1;
 }
 
 /* Label */
 .tl-label {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-style: italic;
   font-weight: 400;
-  font-size: clamp(1.1rem, 4.5vw, 1.5rem);
-  color: #B8974F;
+  font-size: clamp(1.3rem, 5vw, 1.8rem);
+  color: #8B2635;
   line-height: 1.35;
   margin-top: 0.2rem;
 }
 
-/* Guinguette : accent doré */
-.tl-time--gold  { color: #B8974F; }
-.tl-label--gold { color: rgba(184, 151, 79, 0.88); }
+/* Guinguette */
+.tl-time--gold  { color: #8B2635; }
+.tl-label--gold { color: #8B2635; }
 
 /* Flèches décoratives */
 .tl-arrow {

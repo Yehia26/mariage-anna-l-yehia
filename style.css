@@ -327,12 +327,14 @@ body {
 /* ─── SECTION ③ TIMELINE ────────────────────────── */
 .section--timeline {
   justify-content: center;
-  gap: 2rem;
+  gap: 2.5rem;
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
 }
 
 .tl-title {
   font-family: 'Great Vibes', cursive;
-  font-size: clamp(2.6rem, 10vw, 4rem);
+  font-size: clamp(3rem, 12vw, 5rem);
   color: #8B2635;
   text-align: center;
   line-height: 1.2;
@@ -341,7 +343,6 @@ body {
 .timeline {
   position: relative;
   width: 100%;
-  max-width: 360px;
   display: flex;
   flex-direction: column;
   gap: 0;
@@ -351,8 +352,8 @@ body {
 .tl-line {
   position: absolute;
   left: 50%;
-  top: 12px;
-  bottom: 12px;
+  top: 16px;
+  bottom: 16px;
   width: 1px;
   background: rgba(139, 38, 53, 0.25);
   transform: translateX(-50%);
@@ -362,10 +363,10 @@ body {
 /* Item : grille 3 colonnes — gauche | point | droite */
 .tl-item {
   display: grid;
-  grid-template-columns: 1fr 22px 1fr;
+  grid-template-columns: 1fr 28px 1fr;
   align-items: center;
-  gap: 0.6rem;
-  padding: 0.9rem 0;
+  gap: 0.8rem;
+  padding: 1.2rem 0;
   position: relative;
   z-index: 1;
 }
@@ -388,16 +389,16 @@ body {
 
 /* Point cœur sur la ligne */
 .tl-dot {
-  width: 22px;
-  height: 22px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
-  background: rgba(255,255,255,0.75);
+  background: rgba(255,255,255,0.80);
   backdrop-filter: blur(4px);
-  border: 1px solid rgba(139, 38, 53, 0.30);
+  border: 1px solid rgba(139, 38, 53, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 7px;
+  font-size: 9px;
   color: #8B2635;
   z-index: 2;
   position: relative;
@@ -405,9 +406,9 @@ body {
 
 /* Icônes SVG */
 .tl-svg {
-  width: 58px;
-  height: 58px;
-  color: rgba(139, 38, 53, 0.75);
+  width: clamp(70px, 22vw, 100px);
+  height: clamp(70px, 22vw, 100px);
+  color: rgba(139, 38, 53, 0.72);
   flex-shrink: 0;
 }
 
@@ -416,9 +417,9 @@ body {
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-style: italic;
   font-weight: 300;
-  font-size: clamp(1.05rem, 4vw, 1.3rem);
+  font-size: clamp(1.4rem, 5.5vw, 2rem);
   color: #8B2635;
-  line-height: 1.2;
+  line-height: 1.1;
 }
 
 /* Label */
@@ -426,31 +427,31 @@ body {
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-style: normal;
   font-weight: 300;
-  font-size: clamp(0.82rem, 3.2vw, 1rem);
-  color: rgba(139, 38, 53, 0.70);
+  font-size: clamp(0.95rem, 3.8vw, 1.3rem);
+  color: rgba(139, 38, 53, 0.72);
   line-height: 1.35;
-  margin-top: 0.15rem;
+  margin-top: 0.2rem;
 }
 
 /* Guinguette : accent doré */
 .tl-time--gold  { color: #B8974F; }
-.tl-label--gold { color: rgba(184, 151, 79, 0.85); }
+.tl-label--gold { color: rgba(184, 151, 79, 0.88); }
 
 /* Flèches décoratives */
 .tl-arrow {
   display: flex;
-  padding: 0 1.2rem;
-  opacity: 0.45;
+  opacity: 0.40;
   color: #8B2635;
+  padding: 0 10%;
 }
 
 .tl-arrow svg {
   width: 100%;
-  height: 24px;
+  height: 28px;
 }
 
-.tl-arrow--r { justify-content: flex-end; padding-right: 0; }
-.tl-arrow--l { justify-content: flex-start; padding-left: 0; }
+.tl-arrow--r { justify-content: flex-end; }
+.tl-arrow--l { justify-content: flex-start; }
 
 /* ─── ANIMATIONS SCROLL ─────────────────────────── */
 .animate {

@@ -79,7 +79,7 @@ body {
 .famille {
   font-style: italic;
   font-weight: 400;
-  font-size: clamp(1.4rem, 5vw, 1.8rem);
+  font-size: 20px;
   line-height: 1.55;
 }
 
@@ -91,7 +91,7 @@ body {
   width: 100%;
   font-style: italic;
   font-weight: 400;
-  font-size: clamp(1.4rem, 5vw, 1.8rem);
+  font-size: 20px;
   color: #8B2635;
 }
 
@@ -112,7 +112,7 @@ body {
 .invite {
   font-style: italic;
   font-weight: 400;
-  font-size: clamp(1.6rem, 6.5vw, 2.1rem);
+  font-size: 24px;
   line-height: 1.45;
 }
 
@@ -126,11 +126,11 @@ body {
 }
 
 .nom {
-  font-size: clamp(5.5rem, 22vw, 8.5rem);
+  font-size: 80px;
 }
 
 .noms-et {
-  font-size: clamp(2.8rem, 11vw, 4.5rem);
+  font-size: 44px;
   opacity: 0.85;
   line-height: 1.2;
 }
@@ -174,19 +174,19 @@ body {
 .date-label {
   font-style: italic;
   font-weight: 500;
-  font-size: clamp(1.9rem, 7.5vw, 2.8rem);
+  font-size: 28px;
   letter-spacing: 0.02em;
 }
 
 .date-au {
   font-style: italic;
   font-weight: 400;
-  font-size: clamp(1.4rem, 5.5vw, 1.8rem);
+  font-size: 20px;
 }
 
 .date-lieu {
   font-family: 'Great Vibes', cursive;
-  font-size: clamp(3.8rem, 15vw, 6.5rem);
+  font-size: 58px;
   line-height: 1.2;
 }
 
@@ -232,7 +232,7 @@ body {
 
 .rsvp-titre {
   font-family: 'Great Vibes', cursive;
-  font-size: clamp(3.2rem, 13vw, 5rem);
+  font-size: 50px;
   line-height: 1.15;
   margin-bottom: 1.4rem;
 }
@@ -261,7 +261,7 @@ body {
 .rsvp-texte {
   font-style: italic;
   font-weight: 400;
-  font-size: clamp(1.35rem, 5vw, 1.7rem);
+  font-size: 20px;
   line-height: 1.9;
   margin-bottom: 2rem;
 }
@@ -278,7 +278,7 @@ body {
   border-radius: 50px;
   font-style: italic;
   font-weight: 400;
-  font-size: clamp(1.25rem, 4.8vw, 1.5rem);
+  font-size: 18px;
   letter-spacing: 0.06em;
   color: #8B2635;
   text-decoration: none;
@@ -331,7 +331,7 @@ body {
 
 .tl-title {
   font-family: 'Great Vibes', cursive;
-  font-size: clamp(3.8rem, 15vw, 6.5rem);
+  font-size: 58px;
   color: #8B2635;
   text-align: center;
   line-height: 1.2;
@@ -414,7 +414,7 @@ body {
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-style: italic;
   font-weight: 400;
-  font-size: clamp(1.9rem, 7.5vw, 2.8rem);
+  font-size: 30px;
   color: #8B2635;
   line-height: 1.1;
 }
@@ -424,7 +424,7 @@ body {
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-style: normal;
   font-weight: 400;
-  font-size: clamp(1.35rem, 5.2vw, 1.8rem);
+  font-size: 20px;
   color: rgba(139, 38, 53, 0.90);
   line-height: 1.35;
   margin-top: 0.2rem;

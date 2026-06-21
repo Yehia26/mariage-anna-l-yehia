@@ -405,7 +405,7 @@ body {
 .tl-svg {
   width: clamp(70px, 22vw, 100px);
   height: clamp(70px, 22vw, 100px);
-  color: rgba(139, 38, 53, 0.72);
+  color: #8B2635;
   flex-shrink: 0;
 }
 
@@ -425,14 +425,13 @@ body {
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
-  color: rgba(139, 38, 53, 0.90);
+  color: #8B2635;
   line-height: 1.35;
   margin-top: 0.2rem;
 }
 
-/* Guinguette : accent doré */
-.tl-time--gold  { color: #B8974F; }
-.tl-label--gold { color: rgba(184, 151, 79, 0.88); }
+.tl-time--gold  { color: #8B2635; }
+.tl-label--gold { color: #8B2635; }
 
 /* Flèches décoratives */
 .tl-arrow {

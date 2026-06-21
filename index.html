@@ -3,195 +3,139 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#FAF7EF">
+  <meta name="theme-color" content="#1A1008">
   <title>Mariage Annaël &amp; Yehia — 3 septembre 2026</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Cormorant+SC:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Cormorant+SC:wght@300;400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════════════════
-     FILTRES SVG (référencés si besoin par d'autres éléments)
-═══════════════════════════════════════════════════ -->
-<svg style="position:absolute;width:0;height:0;overflow:hidden">
-<defs>
-  <filter id="leather" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
-    <feTurbulence type="fractalNoise" baseFrequency="0.038 0.060" numOctaves="6" seed="8" stitchTiles="stitch" result="grain"/>
-    <feTurbulence type="fractalNoise" baseFrequency="0.18 0.22" numOctaves="3" seed="14" stitchTiles="stitch" result="micro"/>
-    <feBlend in="grain" in2="micro" mode="multiply" result="combined"/>
-    <feDiffuseLighting in="combined" surfaceScale="5" diffuseConstant="1.1" lighting-color="#C8854A" result="diffuse">
-      <feDistantLight azimuth="220" elevation="52"/>
-    </feDiffuseLighting>
-    <feComposite in="diffuse" in2="SourceGraphic" operator="in" result="diffuse-clipped"/>
-    <feBlend in="SourceGraphic" in2="diffuse-clipped" mode="multiply" result="lit"/>
-    <feSpecularLighting in="combined" surfaceScale="4" specularConstant="0.35" specularExponent="28" lighting-color="rgba(255,220,160,0.6)" result="specular">
-      <feDistantLight azimuth="220" elevation="52"/>
-    </feSpecularLighting>
-    <feComposite in="specular" in2="SourceGraphic" operator="in" result="specular-clipped"/>
-    <feBlend in="lit" in2="specular-clipped" mode="screen"/>
-  </filter>
-</defs>
-</svg>
+<!-- Barre de progression -->
+<div class="progress-bar" id="progressBar" aria-hidden="true"></div>
 
-<!-- ═══════════════════════════════════════════════════
-     LIVRE
-═══════════════════════════════════════════════════ -->
-<div class="book-scene">
-<div class="book-3d">
-<div id="flip-book">
+<!-- Fond panoramique horizontal (2 images côte à côte, défile avec le scroll) -->
+<div class="bg-strip" id="bgStrip" aria-hidden="true">
+  <img src="images/chateau-de-roquefeuille-aquarelle-1.jpeg" alt="">
+  <img src="images/chateau-de-roquefeuille-aquarelle-2.jpeg" alt="">
+</div>
+<div class="bg-overlay" aria-hidden="true"></div>
 
-  <!-- ① COUVERTURE (hard) ───────────────────────── -->
-  <div class="page page-cover" data-density="hard">
-    <div class="p-inner cover-leather-photo">
-      <!-- Vignettage + reflet diagonal -->
-      <div class="cover-vignette"></div>
-      <!-- Cadre doré -->
-      <div class="cover-frame" style="z-index:2;">
-        <p class="cover-sub-disney gold" style="margin-bottom:0.4rem;">Mariage</p>
-        <div class="cover-rule"></div>
-        <h1 class="cover-title-disney gold">ANNAËL</h1>
-        <p class="cover-amp-disney gold">&amp;</p>
-        <h1 class="cover-title-disney gold">YEHIA</h1>
-        <div class="cover-rule"></div>
-        <p class="cover-sub-disney gold" style="margin-top:0.4rem;">03 · 09 · 2026</p>
-      </div>
+<main>
+
+  <!-- ① HERO ──────────────────────────────────────────────── -->
+  <section class="section section--hero">
+    <div class="hero-content">
+      <p class="hero-supra hero-el">Mariage</p>
+      <div class="hero-rule hero-el"></div>
+      <h1 class="hero-name gold hero-el">ANNAËL</h1>
+      <p class="hero-amp hero-el">&amp;</p>
+      <h1 class="hero-name gold hero-el">YEHIA</h1>
+      <div class="hero-rule hero-el"></div>
+      <p class="hero-date hero-el">03 · 09 · 2026</p>
     </div>
-  </div>
+    <div class="scroll-hint hero-el" aria-label="Défiler vers le bas">
+      <span class="scroll-line"></span>
+    </div>
+  </section>
 
-  <!-- ② FAMILLES + NOMS (image 1) ───────────────── -->
-  <div class="page">
-    <div class="p-inner">
-      <img src="images/chateau-de-roquefeuille-aquarelle-1.jpeg" alt="" class="bg-img">
-      <div class="over">
-        <!-- Familles haut -->
-        <div style="display:flex;justify-content:space-between;padding:5% 5% 0;position:relative;z-index:1;">
-          <div class="t-it t-muted" style="font-size:clamp(0.55rem,2.2vw,0.68rem);line-height:2.1;">
-            <p>Mme Rachel Attias</p>
-            <p>Mme Nicole Bouchara</p>
-            <p>Mr Daniel Dahan</p>
-            <p>M et Mme Karen et Henry Bouchara</p>
-          </div>
-          <div class="t-it t-muted" style="font-size:clamp(0.55rem,2.2vw,0.68rem);line-height:2.1;text-align:right;">
-            <p>Mme Danielle Lugassy</p>
-            <p>Mme Stella Cohen</p>
-            <p>Mr et Mme Anne et Eric Cohen</p>
-          </div>
+  <!-- ② FAMILLES + NOMS ──────────────────────────────────── -->
+  <section class="section">
+    <div class="card animate">
+      <div class="familles-row">
+        <div class="famille-col t-it t-muted">
+          <p>Mme Rachel Attias</p>
+          <p>Mme Nicole Bouchara</p>
+          <p>Mr Daniel Dahan</p>
+          <p>M et Mme Karen et Henry Bouchara</p>
         </div>
-        <div style="flex:1;"></div>
-        <!-- Noms bas -->
-        <div style="text-align:center;padding:0 6% 7%;position:relative;z-index:1;">
-          <p class="t-it" style="font-size:clamp(0.72rem,3vw,0.85rem);margin-bottom:1rem;">ont le plaisir de vous inviter au mariage de</p>
-          <h1 class="t-sc" style="font-size:clamp(1.8rem,9vw,2.8rem);">ANNAËL</h1>
-          <p class="t-it" style="font-size:1.2rem;margin:0.3rem 0;">et</p>
-          <h1 class="t-sc" style="font-size:clamp(1.8rem,9vw,2.8rem);">YEHIA</h1>
+        <div class="famille-col famille-col--right t-it t-muted">
+          <p>Mme Danielle Lugassy</p>
+          <p>Mme Stella Cohen</p>
+          <p>Mr et Mme Anne et Eric Cohen</p>
         </div>
       </div>
-    </div>
-  </div>
-
-  <!-- ③ DATE + LIEU (image 2) ────────────────────── -->
-  <div class="page">
-    <div class="p-inner" style="align-items:center;justify-content:center;text-align:center;">
-      <img src="images/chateau-de-roquefeuille-aquarelle-2.jpeg" alt="" class="bg-img">
-      <div style="position:relative;z-index:1;padding:0 1.5rem;">
-        <p class="t-it" style="font-size:clamp(0.82rem,3.5vw,0.98rem);letter-spacing:0.04em;">Le Jeudi 03 septembre 2026</p>
-        <p class="t-it" style="font-size:0.9rem;margin:0.6rem 0;">au</p>
-        <h2 class="t-it t-terra" style="font-size:clamp(1.5rem,6vw,2rem);line-height:1.3;">Chateau de Roquefeuille</h2>
+      <div class="card-rule"></div>
+      <div class="names-block">
+        <p class="t-it t-muted invite-text">ont le plaisir de vous inviter au mariage de</p>
+        <h2 class="t-sc name-heading">ANNAËL</h2>
+        <p class="t-it t-muted name-et">et</p>
+        <h2 class="t-sc name-heading">YEHIA</h2>
       </div>
-      <p class="t-it" style="position:absolute;bottom:7%;left:0;right:0;text-align:center;z-index:1;padding:0 1.5rem;font-size:clamp(0.75rem,3vw,0.88rem);line-height:1.9;">
+    </div>
+  </section>
+
+  <!-- ③ DATE + LIEU ──────────────────────────────────────── -->
+  <section class="section">
+    <div class="card card--center animate">
+      <p class="t-it date-label">Le Jeudi</p>
+      <p class="date-big">03 · 09 · 2026</p>
+      <div class="card-rule"></div>
+      <p class="t-it date-au">au</p>
+      <h2 class="t-it t-terra lieu-title">Château de Roquefeuille</h2>
+      <p class="t-it t-muted houppa-text">
         La houppa aura lieu à 16h<br>et sera suivie de la réception
       </p>
     </div>
-  </div>
+  </section>
 
-  <!-- ④ PRÉSENCE ──────────────────────────────────── -->
-  <div class="page">
-    <div class="p-inner" style="align-items:center;justify-content:center;text-align:center;">
-      <img
-        src="images/tache-verte-aquarelle.jpg" alt="" aria-hidden="true"
-        style="position:absolute;width:130%;max-width:none;height:auto;top:50%;left:50%;transform:translate(-50%,-50%);mix-blend-mode:multiply;opacity:0.55;pointer-events:none;"
-      >
-      <div style="position:relative;z-index:1;padding:0 1.5rem;">
-        <h2 class="t-it" style="font-size:clamp(1.5rem,6vw,2.1rem);letter-spacing:0.06em;">Présence</h2>
-        <p class="t-it t-muted" style="font-size:clamp(0.75rem,3vw,0.88rem);margin-top:1rem;line-height:1.9;max-width:260px;margin-left:auto;margin-right:auto;">
+  <!-- ④ PRÉSENCE ─────────────────────────────────────────── -->
+  <section class="section">
+    <div class="card card--center card--tache animate">
+      <img src="images/tache-verte-aquarelle.jpg" alt="" class="card-tache" aria-hidden="true">
+      <div class="card-tache-inner">
+        <h2 class="t-it presence-title">Présence</h2>
+        <p class="t-it t-muted presence-text">
           Merci de confirmer votre présence<br>avant le 1er juillet 2026
         </p>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- ⑤ ACCÈS ─────────────────────────────────────── -->
-  <div class="page">
-    <div class="p-inner" style="justify-content:center;">
-      <img
-        src="images/tache-pinceau-aquarelle.jpg" alt="" aria-hidden="true"
-        style="position:absolute;width:70%;max-width:none;height:auto;top:50%;left:-5%;transform:translateY(-50%) rotate(90deg);mix-blend-mode:multiply;opacity:0.60;pointer-events:none;"
-      >
-      <div style="position:relative;z-index:1;margin-left:auto;padding-right:6%;padding-left:48%;">
-        <blockquote class="t-it" style="font-size:clamp(0.82rem,3.5vw,0.95rem);line-height:1.9;">
+  <!-- ⑤ ACCÈS ────────────────────────────────────────────── -->
+  <section class="section">
+    <div class="card card--acces animate">
+      <img src="images/tache-pinceau-aquarelle.jpg" alt="" class="card-tache card-tache--pinceau" aria-hidden="true">
+      <div class="card-tache-inner card-tache-inner--left">
+        <blockquote class="t-it acces-quote">
           Life's full of mysteries,<br>but these we can solve.
         </blockquote>
-        <a
-          href="https://maps.google.com/?q=Chateau+de+Roquefeuille"
-          target="_blank" rel="noopener"
-          style="display:inline-block;margin-top:1.8rem;font-style:italic;font-size:clamp(0.75rem,3vw,0.88rem);color:#8B6355;border-bottom:1px solid #8B6355;padding-bottom:2px;text-decoration:none;"
-        >Maps →</a>
+        <a href="https://maps.google.com/?q=Chateau+de+Roquefeuille" target="_blank" rel="noopener" class="acces-link">
+          Voir sur Maps →
+        </a>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- ⑥ COMMODITÉS & RSVP ────────────────────────── -->
-  <div class="page">
-    <div class="p-inner" style="align-items:center;justify-content:center;padding:0 1.5rem;text-align:center;">
-      <div style="display:flex;flex-direction:column;align-items:center;gap:1.1rem;max-width:280px;">
-        <h2 class="t-it t-terra" style="font-size:clamp(1.4rem,5vw,1.6rem);">Commodités</h2>
-        <p class="t-it t-terra" style="font-size:clamp(0.72rem,2.8vw,0.85rem);margin-top:-0.5rem;">(car, hôtel, cadeaux pour les mariés)</p>
-        <p class="t-it t-muted" style="font-size:clamp(0.7rem,2.8vw,0.82rem);line-height:1.9;">
-          La liste de mariage est disponible sur<br>
-          <a href="#" style="border-bottom:1px solid #A8826F;color:inherit;text-decoration:none;">www.reallygreatsite.com</a>
-        </p>
-        <a
-          href="#LIEN_FORMULAIRE"
-          target="_blank" rel="noopener"
-          style="margin-top:0.6rem;padding:1rem 2rem;border:1px solid #A8826F;font-style:italic;font-size:clamp(0.65rem,2.5vw,0.75rem);letter-spacing:0.14em;text-transform:uppercase;color:#8B6355;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;min-height:52px;"
-        >Confirmer votre présence</a>
-      </div>
+  <!-- ⑥ COMMODITÉS & RSVP ────────────────────────────────── -->
+  <section class="section">
+    <div class="card card--center animate">
+      <h2 class="t-it t-terra commodites-title">Commodités</h2>
+      <p class="t-it t-terra commodites-subtitle">(car, hôtel, cadeaux pour les mariés)</p>
+      <div class="card-rule"></div>
+      <p class="t-it t-muted commodites-text">
+        La liste de mariage est disponible sur<br>
+        <a href="#" class="liste-link">www.reallygreatsite.com</a>
+      </p>
+      <a href="#LIEN_FORMULAIRE" target="_blank" rel="noopener" class="rsvp-btn">
+        Confirmer votre présence
+      </a>
     </div>
-  </div>
+  </section>
 
-  <!-- ⑦ 4ème DE COUVERTURE (hard) ──────────────── -->
-  <div class="page" data-density="hard">
-    <div class="p-inner" style="align-items:center;justify-content:center;text-align:center;">
-      <div class="rule"></div>
-      <p class="t-it t-muted" style="font-size:0.72rem;letter-spacing:0.15em;margin-top:1.2rem;">03 · 09 · 2026</p>
+  <!-- ⑦ FERMETURE ────────────────────────────────────────── -->
+  <section class="section section--back">
+    <div class="back-content animate">
+      <div class="hero-rule"></div>
+      <p class="t-it back-date">03 · 09 · 2026</p>
+      <div class="hero-rule"></div>
     </div>
-  </div>
+  </section>
 
-</div><!-- /flip-book -->
+</main>
 
-  <!-- Reliure centrale -->
-  <div class="book-spine"></div>
-
-  <!-- Ombre au sol -->
-  <div class="book-ground-shadow"></div>
-
-  <!-- Reflet de surface -->
-  <div class="book-reflection"></div>
-
-</div><!-- /book-3d -->
-</div><!-- /book-scene -->
-
-<!-- ── Navigation ── -->
-<nav id="nav">
-  <button id="btn-prev" aria-label="Page précédente">‹</button>
-  <span id="page-num">1 / 5</span>
-  <button id="btn-next" aria-label="Page suivante">›</button>
-</nav>
-
-<script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.js"></script>
 <script src="script.js"></script>
 </body>
 </html>

@@ -1,70 +1,40 @@
-(function () {
-  const NAV_H = 72; // hauteur barre nav (px)
+// ── Fond panoramique : translateX proportionnel au scroll vertical ──
+const bgStrip     = document.getElementById('bgStrip');
+const progressBar = document.getElementById('progressBar');
+const IMG_COUNT   = bgStrip ? bgStrip.querySelectorAll('img').length : 1;
 
-  function getDims() {
-    const vw = window.innerWidth;
-    const vh = window.innerHeight;
-    if (vw < 768) {
-      // Mobile : pleine largeur, hauteur moins la nav
-      return { w: vw, h: vh - NAV_H };
-    } else if (vw < 1200) {
-      // Tablette
-      const h = Math.round((vh - NAV_H) * 0.90);
-      return { w: Math.round(h * 0.68), h };
-    } else {
-      // Desktop : demi-largeur × hauteur
-      const h = Math.min(Math.round(vh * 0.85), 720);
-      return { w: Math.round(h * 0.65), h };
-    }
+function onScroll() {
+  const scrolled   = window.scrollY;
+  const maxScroll  = document.documentElement.scrollHeight - window.innerHeight;
+  if (maxScroll <= 0) return;
+
+  const progress = Math.min(scrolled / maxScroll, 1);
+
+  if (bgStrip) {
+    const maxTranslate = (IMG_COUNT - 1) * window.innerWidth;
+    bgStrip.style.transform = `translateX(${-progress * maxTranslate}px)`;
   }
 
-  const { w, h } = getDims();
-
-  const pageFlip = new St.PageFlip(
-    document.getElementById('flip-book'),
-    {
-      width:               w,
-      height:              h,
-      size:                'fixed',
-      showCover:           true,
-      usePortrait:         true,   // 1 page à la fois en portrait mobile
-      startPage:           0,
-      drawShadow:          true,
-      flippingTime:        850,
-      mobileScrollSupport: false,  // évite conflit scroll/flip
-      swipeDistance:       30,     // seuil swipe mobile (px)
-      clickEventForward:   true,   // tap gauche/droite = flip
-      autoSize:            false,
-    }
-  );
-
-  pageFlip.loadFromHTML(document.querySelectorAll('.page'));
-
-  // ── Navigation ──────────────────────────────────────────────────
-  const numEl = document.getElementById('page-num');
-  const INNER = pageFlip.getPageCount() - 2; // sans les 2 couvertures hard
-
-  function updateNav(idx) {
-    const btnP = document.getElementById('btn-prev');
-    const btnN = document.getElementById('btn-next');
-    if (idx <= 0) {
-      numEl.textContent = '·';
-      btnP.disabled = true;
-      btnN.disabled = false;
-    } else if (idx >= pageFlip.getPageCount() - 1) {
-      numEl.textContent = '·';
-      btnP.disabled = false;
-      btnN.disabled = true;
-    } else {
-      numEl.textContent = `${idx} / ${INNER}`;
-      btnP.disabled = false;
-      btnN.disabled = false;
-    }
+  if (progressBar) {
+    progressBar.style.width = `${progress * 100}%`;
   }
+}
 
-  pageFlip.on('flip', (e) => updateNav(e.data));
-  updateNav(0);
+window.addEventListener('scroll', onScroll, { passive: true });
+window.addEventListener('resize', onScroll);
+onScroll();
 
-  document.getElementById('btn-next').addEventListener('click', () => pageFlip.flipNext('bottom'));
-  document.getElementById('btn-prev').addEventListener('click', () => pageFlip.flipPrev('bottom'));
-})();
+// ── Animations d'entrée via IntersectionObserver ─────────────────────
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+);
+
+document.querySelectorAll('.animate').forEach(el => observer.observe(el));

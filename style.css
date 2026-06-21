@@ -13,7 +13,7 @@ body {
 .bg {
   position: fixed;
   inset: 0;
-  background-image: url('images/cezanne-sainte-victoire.webp');
+  background-image: url('images/chateau-de-roquefeuille-aquarelle-3.jpeg');
   background-size: cover;
   background-position: center;
   z-index: 0;
@@ -67,7 +67,7 @@ body {
 .invite {
   font-style: italic;
   font-weight: 300;
-  font-size: clamp(1rem, 4vw, 1.3rem);
+  font-size: 20px;
   color: rgba(255, 255, 255, 0.92);
   line-height: 1.9;
 }

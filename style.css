@@ -68,7 +68,6 @@ body {
   font-style: italic;
   font-weight: 300;
   font-size: clamp(1.2rem, 4.5vw, 1.5rem);
-  border-top: 1px solid rgba(139,38,53,0.3);
   padding-top: 0.6rem;
 }
 

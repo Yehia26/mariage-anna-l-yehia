@@ -5,7 +5,7 @@
 }
 
 body {
-  font-family: 'Great Vibes', cursive;
+  font-family: 'Cormorant Garamond', Georgia, serif;
   background-color: #fff;
   overflow-x: hidden;
 }
@@ -53,15 +53,12 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-right: 2rem;
-  padding-left: 2rem;
-  gap: 5rem;
+  padding: 3.5rem 2rem;
 }
 
 /* ─── SECTION ① HERO ────────────────────────────── */
 .section--hero {
   justify-content: space-between;
-  padding-top: max(1rem, env(safe-area-inset-top));
 }
 
 /* Familles */
@@ -80,10 +77,10 @@ body {
 }
 
 .famille {
+  font-style: italic;
   font-weight: 400;
-  font-size: clamp(1.4rem, 5vw, 1.8rem);
+  font-size: clamp(1.1rem, 4vw, 1.4rem);
   line-height: 1.55;
-  color: #8B2635;
 }
 
 .famille--right { text-align: right; }
@@ -92,6 +89,7 @@ body {
   display: flex;
   justify-content: space-between;
   width: 100%;
+  font-style: italic;
   font-weight: 400;
   font-size: clamp(1.1rem, 4vw, 1.4rem);
   color: #8B2635;
@@ -99,7 +97,7 @@ body {
 
 .parent--right { text-align: right; }
 
-/* Noms au centre — encadré coins ornementaux */
+/* Noms au centre */
 .hero-middle {
   flex: 1;
   display: flex;
@@ -109,20 +107,13 @@ body {
   text-align: center;
   gap: 1rem;
   color: #8B2635;
-  width: 100%;
-  padding: 2rem 1.8rem;
 }
 
 .invite {
-  line-height: 1.6;
-}
-
-.invite--cinzel {
-  font-size: clamp(1.2rem, 4.5vw, 1.6rem);
-}
-
-.invite--garamond {
-  font-size: clamp(1.5rem, 6vw, 2rem);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.2rem, 5vw, 1.6rem);
+  line-height: 1.45;
 }
 
 .noms {
@@ -135,11 +126,11 @@ body {
 }
 
 .nom {
-  font-size: clamp(5.5rem, 22vw, 8.5rem);
+  font-size: clamp(4.5rem, 18vw, 7rem);
 }
 
 .noms-et {
-  font-size: clamp(2.8rem, 11vw, 4.5rem);
+  font-size: clamp(2.2rem, 9vw, 3.5rem);
   opacity: 0.85;
   line-height: 1.2;
 }
@@ -181,13 +172,16 @@ body {
 }
 
 .date-label {
-  font-weight: 400;
+  font-style: italic;
+  font-weight: 500;
   font-size: clamp(1.5rem, 6vw, 2.2rem);
+  letter-spacing: 0.02em;
 }
 
 .date-au {
+  font-style: italic;
   font-weight: 400;
-  font-size: clamp(1.3rem, 5.5vw, 1.8rem);
+  font-size: clamp(1.1rem, 4vw, 1.4rem);
 }
 
 .date-lieu {
@@ -265,15 +259,14 @@ body {
 }
 
 .rsvp-texte {
+  font-style: italic;
   font-weight: 400;
-  font-size: clamp(1.3rem, 5vw, 1.8rem);
+  font-size: clamp(1.05rem, 4vw, 1.3rem);
   line-height: 1.9;
   margin-bottom: 2rem;
 }
 
-.rsvp-texte strong {
-  font-weight: 400;
-}
+.rsvp-texte strong { font-weight: 600; }
 
 .rsvp-btn {
   display: inline-flex;
@@ -283,8 +276,10 @@ body {
   background: transparent;
   border: 1px solid rgba(139, 38, 53, 0.45);
   border-radius: 50px;
+  font-style: italic;
   font-weight: 400;
-  font-size: clamp(1.1rem, 4vw, 1.4rem);
+  font-size: clamp(1rem, 3.8vw, 1.15rem);
+  letter-spacing: 0.06em;
   color: #8B2635;
   text-decoration: none;
   transition: background 0.3s, border-color 0.3s;
@@ -416,24 +411,28 @@ body {
 
 /* Heure */
 .tl-time {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
   font-weight: 400;
-  font-size: clamp(1.8rem, 7vw, 2.6rem);
+  font-size: clamp(1.5rem, 6vw, 2.2rem);
   color: #8B2635;
   line-height: 1.1;
 }
 
 /* Label */
 .tl-label {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: normal;
   font-weight: 400;
-  font-size: clamp(1.3rem, 5vw, 1.8rem);
-  color: #8B2635;
+  font-size: clamp(1.05rem, 4.2vw, 1.4rem);
+  color: rgba(139, 38, 53, 0.90);
   line-height: 1.35;
   margin-top: 0.2rem;
 }
 
-/* Guinguette */
-.tl-time--gold  { color: #8B2635; }
-.tl-label--gold { color: #8B2635; }
+/* Guinguette : accent doré */
+.tl-time--gold  { color: #B8974F; }
+.tl-label--gold { color: rgba(184, 151, 79, 0.88); }
 
 /* Flèches décoratives */
 .tl-arrow {
@@ -473,8 +472,11 @@ body {
 .scroll-hint { pointer-events: none; }
 
 /* ─── SAFE AREA (notch / home bar iPhone) ────────── */
+.section--hero {
+  padding-top:    max(3.5rem, env(safe-area-inset-top));
+}
 .section--rsvp {
-  padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
+  padding-bottom: max(3.5rem, env(safe-area-inset-bottom));
 }
 
 /* ─── BACKDROP-FILTER FALLBACK ──────────────────── */

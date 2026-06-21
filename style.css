@@ -80,10 +80,12 @@ body {
 }
 
 .famille {
+  font-family: 'Cormorant Garamond', Georgia, serif;
   font-style: italic;
   font-weight: 400;
-  font-size: clamp(1.1rem, 4vw, 1.4rem);
+  font-size: clamp(1.2rem, 4.5vw, 1.55rem);
   line-height: 1.55;
+  color: #8B2635;
 }
 
 .famille--right { text-align: right; }
@@ -92,9 +94,11 @@ body {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  font-style: italic;
-  font-weight: 400;
-  font-size: clamp(1.1rem, 4vw, 1.4rem);
+  font-family: 'Cinzel', Georgia, serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: clamp(0.75rem, 3vw, 1rem);
+  letter-spacing: 0.06em;
   color: #8B2635;
 }
 
@@ -154,7 +158,8 @@ body {
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-style: italic;
   font-weight: 400;
-  font-size: clamp(1.3rem, 5.5vw, 1.9rem);
+  font-size: clamp(1.4rem, 6vw, 2rem);
+  color: #B8974F;
 }
 
 .noms {
@@ -213,16 +218,19 @@ body {
 }
 
 .date-label {
-  font-style: italic;
+  font-family: 'Cinzel', Georgia, serif;
+  font-style: normal;
   font-weight: 500;
-  font-size: clamp(1.5rem, 6vw, 2.2rem);
-  letter-spacing: 0.02em;
+  font-size: clamp(1.2rem, 5vw, 1.8rem);
+  letter-spacing: 0.08em;
 }
 
 .date-au {
+  font-family: 'Cormorant Garamond', Georgia, serif;
   font-style: italic;
   font-weight: 400;
-  font-size: clamp(1.1rem, 4vw, 1.4rem);
+  font-size: clamp(1.3rem, 5.5vw, 1.8rem);
+  color: #B8974F;
 }
 
 .date-lieu {
@@ -300,14 +308,20 @@ body {
 }
 
 .rsvp-texte {
+  font-family: 'Cormorant Garamond', Georgia, serif;
   font-style: italic;
   font-weight: 400;
-  font-size: clamp(1.05rem, 4vw, 1.3rem);
+  font-size: clamp(1.15rem, 4.5vw, 1.45rem);
   line-height: 1.9;
   margin-bottom: 2rem;
 }
 
-.rsvp-texte strong { font-weight: 600; }
+.rsvp-texte strong {
+  font-family: 'Cinzel', Georgia, serif;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
 
 .rsvp-btn {
   display: inline-flex;
@@ -317,10 +331,11 @@ body {
   background: transparent;
   border: 1px solid rgba(139, 38, 53, 0.45);
   border-radius: 50px;
-  font-style: italic;
+  font-family: 'Cinzel', Georgia, serif;
+  font-style: normal;
   font-weight: 400;
-  font-size: clamp(1rem, 3.8vw, 1.15rem);
-  letter-spacing: 0.06em;
+  font-size: clamp(0.8rem, 3.2vw, 1rem);
+  letter-spacing: 0.12em;
   color: #8B2635;
   text-decoration: none;
   transition: background 0.3s, border-color 0.3s;
@@ -371,11 +386,14 @@ body {
 }
 
 .tl-title {
-  font-family: 'Great Vibes', cursive;
-  font-size: clamp(3rem, 12vw, 5rem);
+  font-family: 'Cinzel', Georgia, serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: clamp(1.8rem, 7vw, 2.8rem);
+  letter-spacing: 0.2em;
   color: #8B2635;
   text-align: center;
-  line-height: 1.2;
+  line-height: 1.3;
 }
 
 .timeline {
@@ -452,10 +470,11 @@ body {
 
 /* Heure */
 .tl-time {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-style: italic;
-  font-weight: 400;
-  font-size: clamp(1.5rem, 6vw, 2.2rem);
+  font-family: 'Cinzel', Georgia, serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: clamp(1.6rem, 6.5vw, 2.3rem);
+  letter-spacing: 0.05em;
   color: #8B2635;
   line-height: 1.1;
 }
@@ -463,10 +482,10 @@ body {
 /* Label */
 .tl-label {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-style: normal;
+  font-style: italic;
   font-weight: 400;
-  font-size: clamp(1.05rem, 4.2vw, 1.4rem);
-  color: rgba(139, 38, 53, 0.90);
+  font-size: clamp(1.1rem, 4.5vw, 1.5rem);
+  color: #B8974F;
   line-height: 1.35;
   margin-top: 0.2rem;
 }

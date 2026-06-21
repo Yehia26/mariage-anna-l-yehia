@@ -68,7 +68,6 @@ body {
   font-style: italic;
   font-weight: 300;
   font-size: clamp(1.2rem, 4.5vw, 1.5rem);
-  padding-top: 0.6rem;
 }
 
 .parent--right {

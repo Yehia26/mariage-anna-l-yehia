@@ -40,7 +40,7 @@ body {
   top: 0; left: 0;
   height: 2px;
   width: 0%;
-  background: #8B2635;
+  background: #7D2230;
   z-index: 100;
 }
 
@@ -67,7 +67,7 @@ body {
   font-family: 'Frank Ruhl Libre', serif;
   font-size: 20px;
   font-weight: 400;
-  color: #8B2635;
+  color: #7D2230;
   text-align: center;
   direction: rtl;
   letter-spacing: 0.04em;
@@ -80,7 +80,7 @@ body {
   flex-direction: column;
   gap: 0.6rem;
   width: 100%;
-  color: #8B2635;
+  color: #7D2230;
 }
 
 .grands-parents {
@@ -105,7 +105,7 @@ body {
   font-style: italic;
   font-weight: 400;
   font-size: 20px;
-  color: #8B2635;
+  color: #7D2230;
 }
 
 .parent--right { text-align: right; }
@@ -119,7 +119,7 @@ body {
   justify-content: center;
   text-align: center;
   gap: 2rem;
-  color: #8B2635;
+  color: #7D2230;
 }
 
 .invite {
@@ -160,7 +160,7 @@ body {
   display: block;
   width: 1px;
   height: 48px;
-  background: linear-gradient(to bottom, rgba(139, 38, 53, 0.6), transparent);
+  background: linear-gradient(to bottom, rgba(125, 34, 48, 0.6), transparent);
   animation: scrollPulse 2s ease-in-out infinite;
   transform-origin: top;
 }
@@ -181,7 +181,7 @@ body {
   align-items: center;
   text-align: center;
   gap: 2rem;
-  color: #8B2635;
+  color: #7D2230;
 }
 
 .date-label {
@@ -221,7 +221,7 @@ body {
   background: rgba(255, 255, 255, 0.02);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
-  border: 1px solid rgba(139, 38, 53, 0.22);
+  border: 1px solid rgba(125, 34, 48, 0.22);
   border-radius: 0;
   padding: 3.5rem 2.8rem 3rem;
   display: flex;
@@ -231,7 +231,7 @@ body {
   text-align: center;
   max-width: 380px;
   width: 100%;
-  color: #8B2635;
+  color: #7D2230;
   position: relative;
 }
 
@@ -239,7 +239,7 @@ body {
   content: '';
   position: absolute;
   inset: 7px;
-  border: 1px solid rgba(139, 38, 53, 0.10);
+  border: 1px solid rgba(125, 34, 48, 0.10);
   pointer-events: none;
 }
 
@@ -263,12 +263,12 @@ body {
   content: '';
   flex: 1;
   height: 1px;
-  background: rgba(139, 38, 53, 0.22);
+  background: rgba(125, 34, 48, 0.22);
 }
 
 .rsvp-sep span {
   font-size: 0.45rem;
-  color: rgba(139, 38, 53, 0.45);
+  color: rgba(125, 34, 48, 0.45);
 }
 
 .rsvp-texte {
@@ -287,13 +287,13 @@ body {
   gap: 0.6rem;
   padding: 0.85rem 2.2rem;
   background: transparent;
-  border: 1px solid rgba(139, 38, 53, 0.45);
+  border: 1px solid rgba(125, 34, 48, 0.45);
   border-radius: 50px;
   font-style: italic;
   font-weight: 400;
   font-size: 18px;
   letter-spacing: 0.06em;
-  color: #8B2635;
+  color: #7D2230;
   text-decoration: none;
   transition: background 0.3s, border-color 0.3s;
 }
@@ -306,8 +306,8 @@ body {
 }
 
 .rsvp-btn:hover {
-  background: rgba(139, 38, 53, 0.08);
-  border-color: #8B2635;
+  background: rgba(125, 34, 48, 0.08);
+  border-color: #7D2230;
 }
 
 .rsvp-btn:hover::after { transform: translateX(5px); }
@@ -326,18 +326,18 @@ body {
   content: '';
   flex: 1;
   height: 1px;
-  background: rgba(139, 38, 53, 0.22);
+  background: rgba(125, 34, 48, 0.22);
 }
 
 .ornement span {
   font-size: 0.45rem;
-  color: rgba(139, 38, 53, 0.45);
+  color: rgba(125, 34, 48, 0.45);
 }
 
 .ornement-icon {
   height: 22px;
   width: auto;
-  color: rgba(139, 38, 53, 0.60);
+  color: rgba(125, 34, 48, 0.60);
   flex-shrink: 0;
 }
 
@@ -351,7 +351,7 @@ body {
 .tl-title {
   font-family: 'Great Vibes', cursive;
   font-size: 58px;
-  color: #8B2635;
+  color: #7D2230;
   text-align: center;
   line-height: 1.2;
 }
@@ -371,7 +371,7 @@ body {
   top: 16px;
   bottom: 16px;
   width: 1px;
-  background: rgba(139, 38, 53, 0.25);
+  background: rgba(125, 34, 48, 0.25);
   transform: translateX(-50%);
   z-index: 0;
 }
@@ -410,12 +410,12 @@ body {
   border-radius: 50%;
   background: rgba(255,255,255,0.80);
   backdrop-filter: blur(4px);
-  border: 1px solid rgba(139, 38, 53, 0.35);
+  border: 1px solid rgba(125, 34, 48, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 18px;
-  color: #8B2635;
+  color: #7D2230;
   z-index: 2;
   position: relative;
 }
@@ -424,7 +424,7 @@ body {
 .tl-svg {
   width: clamp(70px, 22vw, 100px);
   height: clamp(70px, 22vw, 100px);
-  color: #8B2635;
+  color: #7D2230;
   flex-shrink: 0;
 }
 
@@ -434,7 +434,7 @@ body {
   font-style: italic;
   font-weight: 400;
   font-size: 30px;
-  color: #8B2635;
+  color: #7D2230;
   line-height: 1.1;
 }
 
@@ -444,19 +444,19 @@ body {
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
-  color: #8B2635;
+  color: #7D2230;
   line-height: 1.35;
   margin-top: 0.2rem;
 }
 
-.tl-time--gold  { color: #8B2635; }
-.tl-label--gold { color: #8B2635; }
+.tl-time--gold  { color: #7D2230; }
+.tl-label--gold { color: #7D2230; }
 
 /* Flèches décoratives */
 .tl-arrow {
   display: flex;
   opacity: 0.40;
-  color: #8B2635;
+  color: #7D2230;
   padding: 0 10%;
 }
 
@@ -547,8 +547,8 @@ body {
   background: rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
-  border: 1px solid rgba(139, 38, 53, 0.28);
-  color: rgba(139, 38, 53, 0.6);
+  border: 1px solid rgba(125, 34, 48, 0.28);
+  color: rgba(125, 34, 48, 0.6);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -560,15 +560,15 @@ body {
 
 .music-btn:hover,
 .music-btn:focus-visible {
-  background: rgba(139, 38, 53, 0.08);
-  border-color: rgba(139, 38, 53, 0.55);
-  color: #8B2635;
+  background: rgba(125, 34, 48, 0.08);
+  border-color: rgba(125, 34, 48, 0.55);
+  color: #7D2230;
   outline: none;
 }
 
 .music-btn.is-playing {
-  color: #8B2635;
-  border-color: rgba(139, 38, 53, 0.55);
+  color: #7D2230;
+  border-color: rgba(125, 34, 48, 0.55);
 }
 
 .music-icon {

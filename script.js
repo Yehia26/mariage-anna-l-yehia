@@ -69,55 +69,35 @@ function setPlayingState(playing) {
   if (iconMute) iconMute.style.display = playing ? 'none' : '';
 }
 
-// ─── DIAGNOSTIC TEMPORAIRE (à retirer) ──────────────
-const dbg = document.createElement('div');
-dbg.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(0,0,0,.85);color:#fff;font:12px/1.4 monospace;padding:6px 8px;white-space:pre-wrap;word-break:break-word;';
-dbg.textContent = 'diag: en attente d\'un geste…';
-document.body.appendChild(dbg);
-function diag(msg) { dbg.textContent = 'diag: ' + msg; }
-
-if (audio) {
-  diag('audio trouvé. readyState=' + audio.readyState + ' networkState=' + audio.networkState);
-  audio.addEventListener('error', () => {
-    const e = audio.error;
-    diag('AUDIO ERROR code=' + (e ? e.code : '?') + ' (1=ABORT 2=NETWORK 3=DECODE 4=SRC_NOT_SUPPORTED)');
-  });
-  audio.addEventListener('stalled', () => diag('stalled (réseau bloqué)'));
-}
-
-function startMusic(evt) {
+function startMusic() {
   if (musicStarted || !audio) return;
-  musicStarted = true;
 
-  diag('geste=' + (evt ? evt.type : 'manuel') + ' → play()… readyState=' + audio.readyState);
   audio.volume = 0.45;
   const p = audio.play();
-  if (p === undefined) {
-    diag('play() a renvoyé undefined (vieux navigateur) — supposé OK');
+  if (p === undefined) {        // très vieux navigateurs : pas de promesse
+    musicStarted = true;
     setPlayingState(true);
     return;
   }
   p.then(() => {
-      diag('✅ PLAY OK — paused=' + audio.paused + ' muted=' + audio.muted + ' vol=' + audio.volume);
+      musicStarted = true;
       setPlayingState(true);
       document.removeEventListener('pointerdown', startMusic);
-      document.removeEventListener('touchend',    startMusic);
       document.removeEventListener('click',       startMusic);
     })
-    .catch((err) => {
-      diag('❌ PLAY REJETÉ : ' + err.name + ' — ' + err.message);
-      musicStarted = false;
+    .catch(() => {
+      // Geste non accepté (scroll sur Android) — on attend un vrai tap
     });
 }
 
-// Listeners persistants jusqu'au succès (iOS + Android Chrome + Samsung Internet)
+// Tap franc n'importe où → tente le démarrage (le bouton reste la garantie)
 document.addEventListener('pointerdown', startMusic, { passive: true });
-document.addEventListener('touchend',    startMusic, { passive: true });
 document.addEventListener('click',       startMusic, { passive: true });
 
-// Bouton : toggle mute / unmute
+// Bouton : démarre si pas encore lancé, sinon toggle mute / unmute
 if (musicBtn) {
-  musicBtn.addEventListener('click', () => {
+  musicBtn.addEventListener('click', (e) => {
+    e.stopPropagation();          // évite le double-déclenchement via le listener document
     if (!musicStarted) {
       startMusic();
       return;

@@ -82,9 +82,9 @@ function startMusic() {
     });
 }
 
-// Démarre sur le premier scroll ou tap
-window.addEventListener('scroll',     startMusic, { once: true, passive: true });
+// Démarre au premier contact (iOS + Android)
 document.addEventListener('touchstart', startMusic, { once: true, passive: true });
+document.addEventListener('touchend',   startMusic, { once: true, passive: true });
 
 // Bouton : toggle mute / unmute
 if (musicBtn) {

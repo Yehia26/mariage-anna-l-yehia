@@ -504,7 +504,7 @@ a[x-apple-data-detectors] {
 
 /* ─── SAFE AREA (notch / home bar iPhone) ────────── */
 .section--hero {
-  padding-top:    max(3.5rem, env(safe-area-inset-top));
+  padding-top:    max(1.5rem, env(safe-area-inset-top));
 }
 .section--rsvp {
   padding-bottom: max(3.5rem, env(safe-area-inset-bottom));

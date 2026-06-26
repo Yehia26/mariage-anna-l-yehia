@@ -491,8 +491,10 @@ a[x-apple-data-detectors] {
 }
 
 /* Délais en cascade pour le hero */
-.section--hero .familles    { transition-delay: 0.15s; }
-.section--hero .hero-middle { transition-delay: 0.45s; }
+.section--hero .animate     { transition-duration: 2s; }
+.section--hero .bshaa-tova  { transition-delay: 0.2s; }
+.section--hero .familles    { transition-delay: 0.7s; }
+.section--hero .hero-middle { transition-delay: 1.4s; }
 
 /* Scroll-hint : décoratif uniquement */
 .scroll-hint { pointer-events: none; }

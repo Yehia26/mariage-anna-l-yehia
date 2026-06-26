@@ -69,21 +69,43 @@ function setPlayingState(playing) {
   if (iconMute) iconMute.style.display = playing ? 'none' : '';
 }
 
-function startMusic() {
+// ─── DIAGNOSTIC TEMPORAIRE (à retirer) ──────────────
+const dbg = document.createElement('div');
+dbg.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(0,0,0,.85);color:#fff;font:12px/1.4 monospace;padding:6px 8px;white-space:pre-wrap;word-break:break-word;';
+dbg.textContent = 'diag: en attente d\'un geste…';
+document.body.appendChild(dbg);
+function diag(msg) { dbg.textContent = 'diag: ' + msg; }
+
+if (audio) {
+  diag('audio trouvé. readyState=' + audio.readyState + ' networkState=' + audio.networkState);
+  audio.addEventListener('error', () => {
+    const e = audio.error;
+    diag('AUDIO ERROR code=' + (e ? e.code : '?') + ' (1=ABORT 2=NETWORK 3=DECODE 4=SRC_NOT_SUPPORTED)');
+  });
+  audio.addEventListener('stalled', () => diag('stalled (réseau bloqué)'));
+}
+
+function startMusic(evt) {
   if (musicStarted || !audio) return;
   musicStarted = true;
 
+  diag('geste=' + (evt ? evt.type : 'manuel') + ' → play()… readyState=' + audio.readyState);
   audio.volume = 0.45;
-  audio.play()
-    .then(() => {
+  const p = audio.play();
+  if (p === undefined) {
+    diag('play() a renvoyé undefined (vieux navigateur) — supposé OK');
+    setPlayingState(true);
+    return;
+  }
+  p.then(() => {
+      diag('✅ PLAY OK — paused=' + audio.paused + ' muted=' + audio.muted + ' vol=' + audio.volume);
       setPlayingState(true);
-      // Succès : on retire les listeners
-      document.removeEventListener('touchstart', startMusic);
-      document.removeEventListener('touchend',   startMusic);
-      document.removeEventListener('click',      startMusic);
+      document.removeEventListener('pointerdown', startMusic);
+      document.removeEventListener('touchend',    startMusic);
+      document.removeEventListener('click',       startMusic);
     })
-    .catch(() => {
-      // Échec (Android strict) : on réessaie au prochain geste
+    .catch((err) => {
+      diag('❌ PLAY REJETÉ : ' + err.name + ' — ' + err.message);
       musicStarted = false;
     });
 }

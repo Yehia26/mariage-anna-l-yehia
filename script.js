@@ -75,16 +75,23 @@ function startMusic() {
 
   audio.volume = 0.45;
   audio.play()
-    .then(() => setPlayingState(true))
+    .then(() => {
+      setPlayingState(true);
+      // Succès : on retire les listeners
+      document.removeEventListener('touchstart', startMusic);
+      document.removeEventListener('touchend',   startMusic);
+      document.removeEventListener('click',      startMusic);
+    })
     .catch(() => {
-      // Autoplay bloqué malgré le geste (rare) — on réinitialise
+      // Échec (Android strict) : on réessaie au prochain geste
       musicStarted = false;
     });
 }
 
-// Démarre au premier contact (iOS + Android)
-document.addEventListener('touchstart', startMusic, { once: true, passive: true });
-document.addEventListener('touchend',   startMusic, { once: true, passive: true });
+// Listeners persistants jusqu'au succès (iOS + Android Chrome + Samsung Internet)
+document.addEventListener('touchstart', startMusic, { passive: true });
+document.addEventListener('touchend',   startMusic, { passive: true });
+document.addEventListener('click',      startMusic, { passive: true });
 
 // Bouton : toggle mute / unmute
 if (musicBtn) {

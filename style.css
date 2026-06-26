@@ -491,17 +491,15 @@ a[x-apple-data-detectors] {
 }
 
 /* Délais en cascade pour le hero */
-.section--hero .animate     { transition-duration: 2s; }
-.section--hero .bshaa-tova  { transition-delay: 0.2s; }
-.section--hero .familles    { transition-delay: 0.7s; }
-.section--hero .hero-middle { transition-delay: 1.4s; }
-
-/* Section date — apparition séquentielle */
-.section--date .date-content > *:nth-child(1) { transition-delay: 0s; }
-.section--date .date-content > *:nth-child(2) { transition-delay: 0.35s; }
-.section--date .date-content > *:nth-child(3) { transition-delay: 0.65s; }
-.section--date .date-content > *:nth-child(4) { transition-delay: 1.0s; }
-.section--date .date-content > *:nth-child(5) { transition-delay: 1.3s; }
+.section--hero .animate    { transition-duration: 2s; }
+.section--hero .bshaa-tova { transition-delay: 0.2s; }
+.section--hero .familles   { transition-delay: 0.7s; }
+/* hero-middle : chaque enfant s'anime séquentiellement */
+.section--hero .invite     { transition-delay: 1.4s; }
+.section--hero .hero-middle > .ornement { transition-delay: 1.75s; }
+.section--hero .noms .nom:first-child   { transition-delay: 2.1s; }
+.section--hero .noms-et                 { transition-delay: 2.4s; }
+.section--hero .noms .nom:last-child    { transition-delay: 2.7s; }
 
 /* Scroll-hint : décoratif uniquement */
 .scroll-hint { pointer-events: none; }

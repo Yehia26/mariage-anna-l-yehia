@@ -18,7 +18,20 @@
   <meta property="og:image"       content="https://mariage-annael-et-yehia.vercel.app/images/chateau-de-roquefeuille-aquarelle-3.jpeg">
   <meta property="og:locale"      content="fr_FR">
 </head>
-<body>
+<body class="invite-locked">
+
+<!-- Overlay d'accueil : la carte s'ouvre au tap (lance aussi la musique) -->
+<div class="invite-overlay" id="inviteOverlay" role="button" tabindex="0"
+     aria-label="Ouvrir l'invitation et activer la musique">
+  <div class="flap flap--left" aria-hidden="true">
+    <span class="seal-half seal-half--l"></span>
+  </div>
+  <div class="flap flap--right" aria-hidden="true">
+    <span class="seal-half seal-half--r"></span>
+  </div>
+  <span class="seal-initials" aria-hidden="true">A<i>&amp;</i>Y</span>
+  <span class="invite-cta" aria-hidden="true">Ouvrir l'invitation</span>
+</div>
 
 <!-- Fond zoomé au scroll -->
 <div class="bg" aria-hidden="true">

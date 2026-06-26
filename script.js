@@ -110,3 +110,24 @@ if (musicBtn) {
 
 // Initialisation visuelle : icône note visible, mute masquée
 setPlayingState(false);
+
+// ─── Overlay d'accueil : ouverture de la carte ──────
+const inviteOverlay = document.getElementById('inviteOverlay');
+
+function openInvitation() {
+  if (!inviteOverlay || inviteOverlay.classList.contains('is-open')) return;
+  startMusic();                                    // tap franc → lecture autorisée partout
+  inviteOverlay.classList.add('is-open');
+  document.body.classList.remove('invite-locked'); // déclenche la cascade du hero, synchronisée
+  setTimeout(() => inviteOverlay.classList.add('is-gone'), 1800);
+}
+
+if (inviteOverlay) {
+  inviteOverlay.addEventListener('click', openInvitation);
+  inviteOverlay.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openInvitation(); }
+  });
+} else {
+  // Sécurité : si l'overlay n'existe pas, ne jamais laisser le hero gelé
+  document.body.classList.remove('invite-locked');
+}

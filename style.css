@@ -599,6 +599,135 @@ a[x-apple-data-detectors] {
   animation: musicPulse 2.4s ease-in-out infinite;
 }
 
+/* ─── OVERLAY D'ACCUEIL : CARTE QUI S'OUVRE ──────── */
+.invite-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  perspective: 1600px;
+  overflow: hidden;
+  cursor: pointer;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  -webkit-tap-highlight-color: transparent;
+}
+.invite-overlay.is-open { pointer-events: none; }
+.invite-overlay.is-gone { display: none; }
+
+/* Tant que la carte est fermée : on gèle l'animation du hero
+   pour qu'elle se déclenche au moment de l'ouverture, pas derrière l'overlay */
+body.invite-locked .section--hero .animate {
+  opacity: 0 !important;
+  transform: translateY(26px) !important;
+}
+
+/* Les deux battants de la carte */
+.flap {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  background:
+    radial-gradient(120% 100% at 50% 0%, #fdf8f1 0%, #f4eae0 70%, #ecdfd0 100%);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transition: transform 1.25s cubic-bezier(0.66, 0, 0.2, 1);
+  transition-delay: 0.28s;          /* le sceau "casse" avant l'ouverture */
+  will-change: transform;
+}
+.flap--left  { left: 0;  transform-origin: left  center;
+  box-shadow: inset -1px 0 0 rgba(125, 34, 48, 0.16); }
+.flap--right { right: 0; transform-origin: right center;
+  box-shadow: inset  1px 0 0 rgba(125, 34, 48, 0.16); }
+
+/* Cadre décoratif façon faire-part */
+.flap::before {
+  content: '';
+  position: absolute;
+  inset: 20px;
+  border: 1px solid rgba(125, 34, 48, 0.22);
+  pointer-events: none;
+}
+
+/* Ouverture en double porte (3D) */
+.invite-overlay.is-open .flap--left  { transform: rotateY(-118deg); }
+.invite-overlay.is-open .flap--right { transform: rotateY( 118deg); }
+
+/* Sceau de cire : deux moitiés solidaires de chaque battant */
+.seal-half {
+  position: absolute;
+  top: 50%;
+  width: 62px;                /* demi-diamètre : deux moitiés = cercle de 124px */
+  height: 124px;
+  margin-top: -62px;
+  background: radial-gradient(circle at 50% 30%, #9c3543 0%, #7D2230 52%, #591722 100%);
+}
+/* moitié gauche : flanc plat sur la jointure (bord droit du battant gauche) */
+.seal-half--l { right: 0; border-radius: 62px 0 0 62px;
+  background-position: right center;
+  box-shadow: -6px 8px 18px rgba(89,23,34,.4), inset 3px 0 7px rgba(255,255,255,.16), inset -1px 0 3px rgba(89,23,34,.55); }
+/* moitié droite : flanc plat sur la jointure (bord gauche du battant droit) */
+.seal-half--r { left: 0;  border-radius: 0 62px 62px 0;
+  background-position: left center;
+  box-shadow: 6px 8px 18px rgba(89,23,34,.4), inset -3px 0 7px rgba(255,255,255,.16), inset 1px 0 3px rgba(89,23,34,.55); }
+
+/* Anneau estampé (demi-anneau par moitié) */
+.seal-half::after {
+  content: '';
+  position: absolute;
+  top: 12px;
+  bottom: 12px;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+}
+.seal-half--l::after { left: 12px;  right: 0; border-radius: 50px 0 0 50px; border-right: 0; }
+.seal-half--r::after { right: 12px; left: 0;  border-radius: 0 50px 50px 0; border-left: 0; }
+
+/* Initiales gravées au centre du sceau */
+.seal-initials {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-family: 'Great Vibes', cursive;
+  font-size: 42px;
+  line-height: 1;
+  color: #f3e2d4;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  transition: opacity 0.32s ease, transform 0.32s ease;
+}
+.seal-initials i { font-style: normal; font-size: 24px; opacity: 0.8; }
+.invite-overlay.is-open .seal-initials {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(1.5);
+}
+
+/* Invitation à taper */
+.invite-cta {
+  position: absolute;
+  left: 50%;
+  top: calc(50% + 98px);
+  transform: translateX(-50%);
+  z-index: 3;
+  white-space: nowrap;
+  color: #7D2230;
+  font-style: italic;
+  font-size: 21px;
+  letter-spacing: 0.07em;
+  animation: ctaPulse 2.2s ease-in-out infinite;
+}
+.invite-overlay.is-open .invite-cta {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  animation: none;
+}
+@keyframes ctaPulse {
+  0%, 100% { opacity: 0.5; }
+  50%       { opacity: 1; }
+}
+
 /* ─── REDUCED MOTION ─────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   .animate {
@@ -607,4 +736,8 @@ a[x-apple-data-detectors] {
   }
   .scroll-line { animation: none; opacity: 0.55; }
   .music-btn.is-playing .music-icon--note { animation: none; }
+
+  .flap { transition: opacity 0.5s ease; transition-delay: 0s; }
+  .invite-overlay.is-open .flap { transform: none; opacity: 0; }
+  .invite-cta { animation: none; }
 }

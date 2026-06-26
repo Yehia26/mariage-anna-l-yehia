@@ -497,8 +497,7 @@ a[x-apple-data-detectors] {
 /* hero-middle : chaque enfant s'anime séquentiellement */
 .section--hero .invite     { transition-delay: 1.4s; }
 .section--hero .hero-middle > .ornement { transition-delay: 1.75s; }
-.section--hero .noms .nom { transition-delay: 2.1s; }
-.section--hero .noms-et   { transition-delay: 2.1s; }
+.section--hero .noms      { transition-delay: 2.1s; }
 
 /* Scroll-hint : décoratif uniquement */
 .scroll-hint { pointer-events: none; }
